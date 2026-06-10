@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "inicio": "Inicio",
+    "fractae": "FRACTAE",
+    "features": "Features",
+    "beneficios": "Beneficios",
+    "planes": "Planes",
+    "faq": "FAQ",
+    "contacto": "Contacto",
+    "cta": "Agendar demo",
+    "login": "Iniciar sesión"
+  },
+  "hero": {
+    "label": "— Gestión residencial inteligente",
+    "headline": "El ERP que simplifica la administración de fraccionamientos, condominios y edificios",
+    "headline_highlight": "simplifica",
+    "subtitle": "FRACTAE es un sistema integral para centralizar comunicación, accesos, finanzas, reportes e incidencias en una sola plataforma. Deja atrás Excel, WhatsApp y el papel.",
+    "cta_primary": "Probar ahora",
+    "cta_secondary": "Contáctanos",
+    "social_proof": "50+ administradores ya usan FRACTAE",
+    "metric_label": "Cobranza este mes",
+    "payment_unit": "Casa 14",
+    "payment_status": "Pendiente de pago"
+  },
+  "why": {
+    "label": "¿Por qué FRACTAE?",
+    "title": "Administrar una comunidad no debería depender de mensajes sueltos, archivos perdidos y reportes manuales.",
+    "without": "Sin FRACTAE",
+    "with": "Con FRACTAE",
+    "problems": [
+      { "title": "Procesos manuales y dispersos", "desc": "WhatsApp, Excel, papel y llamadas generan duplicidad, errores y falta de seguimiento." },
+      { "title": "Cobranza difícil de controlar", "desc": "Pagos atrasados, conciliaciones manuales y poca visibilidad financiera." },
+      { "title": "Comunicación desordenada", "desc": "Avisos perdidos, reclamos repetidos y vecinos sin información clara." },
+      { "title": "Operación reactiva", "desc": "El administrador se entera tarde, responde tarde y documenta poco." },
+      { "title": "Accesos sin trazabilidad completa", "desc": "Visitantes, proveedores y residentes entran sin un registro operativo confiable." }
+    ],
+    "solutions": [
+      { "title": "Todo centralizado en un solo sistema", "desc": "Accesos, pagos, comunicación, reportes e incidencias desde una misma plataforma." },
+      { "title": "Control financiero en tiempo real", "desc": "Consulta cobranza, adeudos, pagos y reportes sin depender de archivos manuales." },
+      { "title": "Comunicación clara y segmentada", "desc": "Envía avisos a residentes, comités o grupos específicos sin ruido operativo." },
+      { "title": "Gestión con datos, no con suposiciones", "desc": "Dashboards y reportes para tomar decisiones con información actualizada." },
+      { "title": "Accesos seguros y trazables", "desc": "Registro completo de entradas y salidas, visitantes, proveedores y autorizaciones." }
+    ]
+  },
+  "features": {
+    "label": "Features",
+    "title": "Todo lo que necesitas en un solo sistema",
+    "subtitle": "Diseñado para administradores que necesitan control real.",
+    "items": [
+      {
+        "titulo": "Accesos",
+        "descripcion": "Cada entrada, perfectamente registrada",
+        "texto": "Controla accesos de residentes, visitas, proveedores y personal autorizado con registros claros, trazables y consultables.",
+        "bullets": [
+          "Invitaciones y autorizaciones digitales",
+          "Historial de entradas y salidas con identificación",
+          "Registro por residente, visitante o proveedor"
+        ]
+      },
+      {
+        "titulo": "Finanzas",
+        "descripcion": "Cobranza clara, visible y ordenada",
+        "texto": "Consulta pagos, adeudos y avance de cobranza sin depender de hojas de cálculo ni conciliaciones interminables.",
+        "bullets": [
+          "Estado de cuenta por residente",
+          "Seguimiento de pagos pendientes",
+          "Reportes financieros para administración y comité"
+        ]
+      },
+      {
+        "titulo": "Comunicación",
+        "descripcion": "Un canal formal para toda la comunidad",
+        "texto": "Evita que los avisos importantes se pierdan entre chats. Centraliza comunicados, documentos y mensajes relevantes.",
+        "bullets": [
+          "Avisos generales o segmentados",
+          "Documentos y reglamentos disponibles",
+          "Comunicación entre administración, comité y residentes"
+        ]
+      },
+      {
+        "titulo": "Reportes",
+        "descripcion": "Cada solicitud con seguimiento real",
+        "texto": "Convierte quejas, reportes e incidencias en tickets con responsable, estatus, evidencia y fecha de atención.",
+        "bullets": [
+          "Reporte con foto y descripción",
+          "Estatus de seguimiento",
+          "Historial por casa, área o categoría"
+        ]
+      },
+      {
+        "titulo": "Reservas",
+        "descripcion": "Amenidades organizadas sin conflictos",
+        "texto": "Administra reservas de salones, canchas, terrazas o áreas comunes con reglas claras y disponibilidad visible.",
+        "bullets": [
+          "Calendario de disponibilidad",
+          "Confirmaciones y pagos digitales",
+          "Reglas por amenidad o tipo de residente"
+        ]
+      },
+      {
+        "titulo": "Participación comunitaria",
+        "descripcion": "Convierte opiniones en decisiones formales",
+        "texto": "Consulta a residentes, mide posturas y ejecuta votaciones vinculantes bajo reglas previamente definidas, con resultados claros y evidencia consultable.",
+        "bullets": [
+          "Encuestas, consultas y votaciones digitales",
+          "Participación registrada y resultados transparentes",
+          "Soporte documental para decisiones de comité o asamblea"
+        ]
+      }
+    ]
+  },
+  "benefits": {
+    "label": "Beneficios",
+    "title": "Transforma la administración diaria de tu comunidad",
+    "items": [
+      { "titulo": "Menos carga administrativa", "descripcion": "Automatiza tareas repetitivas y evita depender de archivos dispersos." },
+      { "titulo": "Mayor transparencia para el comité", "descripcion": "Consulta reportes, pagos, incidencias y actividad operativa desde un solo lugar." },
+      { "titulo": "Residentes mejor informados", "descripcion": "Centraliza avisos, estados de cuenta, documentos y solicitudes." },
+      { "titulo": "Decisiones basadas en datos", "descripcion": "Mide cobranza, incidencias, accesos y operación con reportes claros." },
+      { "titulo": "Seguimiento completo", "descripcion": "Cada solicitud, pago o acceso queda registrado con historial consultable." },
+      { "titulo": "Operación lista para escalar", "descripcion": "Ideal para comunidades pequeñas, medianas o grandes con múltiples necesidades operativas." }
+    ]
+  },
+  "plans": {
+    "label": "Planes",
+    "title": "Moderniza la gestión de tu comunidad con FRACTAE",
+    "subtitle": "Planes flexibles según el tamaño de tu comunidad",
+    "description": "Solicita una demo personalizada y descubre como FRACTAE se adapta perfectamente a las necesidades de tu comunidad.",
+    "cta": "Probar ahora",
+    "trust": ["Configuración guiada", "Módulos flexibles", "Soporte de implementación"]
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      { "q": "¿FRACTAE es para fraccionamientos o también para condominios?", "a": "FRACTAE está diseñado para comunidades residenciales como fraccionamientos, condominios horizontales, torres, privadas y desarrollos con administración centralizada." },
+      { "q": "¿Necesito instalar hardware nuevo para usar FRACTAE?", "a": "No necesariamente. FRACTAE puede iniciar con módulos administrativos y digitales. Las integraciones de acceso, seguridad o hardware pueden evaluarse con nosotros según la infraestructura o necesidad de cada comunidad." },
+      { "q": "¿Qué módulos incluye la plataforma?", "a": "FRACTAE puede incluir accesos, finanzas, comunicación, consultas y votaciones, reportes, incidencias, reservas de amenidades, seguridad y dashboards administrativos." },
+      { "q": "¿Los residentes también usan la plataforma?", "a": "Sí. Se cuenta con aplicación para iOS y Android para que los residentes puedan consultar información, recibir avisos, registrar solicitudes, revisar pagos o generar accesos, según los módulos contratados." },
+      { "q": "¿Cuánto tarda la implementación?", "a": "Depende del tamaño de la comunidad y los módulos seleccionados. En la demo se puede estimar una ruta de implementación por etapas." },
+      { "q": "¿FRACTAE reemplaza WhatsApp y Excel?", "a": "No obliga a eliminarlos de inmediato, pero sí reduce su dependencia al centralizar procesos formales, información operativa y reportes en una sola plataforma." },
+      { "q": "¿Cómo solicito una demo?", "a": "Completa el formulario de contacto y el equipo de FRACTAE te responderá para entender las necesidades de tu comunidad y mostrarte la plataforma." }
+    ]
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "Agenda una demo para tu comunidad y te contestamos en menos de 24 horas.",
+    "subtitle": "Cuéntanos cómo opera tu fraccionamiento y te mostraremos cómo FRACTAE puede ayudarte a centralizar accesos, pagos, comunicación y reportes.",
+    "step1_label": "¿Cómo te llamas?",
+    "step1_placeholder": "Tu nombre",
+    "step2_label": "¿Cómo prefieres que te contactemos?",
+    "channel_whatsapp": "WhatsApp",
+    "channel_email": "Email",
+    "step3_whatsapp": "Tu WhatsApp",
+    "step3_email": "Tu email",
+    "step3_placeholder_wa": "+52 55 1234 5678",
+    "step3_placeholder_email": "nombre@correo.com",
+    "continue": "Continuar →",
+    "back": "← Atrás",
+    "submit": "Enviar →",
+    "success_title": "¡Listo!",
+    "success_subtitle": "El equipo de FRACTAE te contactará pronto."
+  },
+  "footer": {
+    "tagline": "Gestión integral de fraccionamientos y comunidades residenciales.",
+    "cta": "Solicitar demo →",
+    "product": "Producto",
+    "company": "Empresa",
+    "contact": "Contacto",
+    "email": "info@fractae.mx",
+    "phone": "+55 5544 667788",
+    "copyright": "© 2026 FRACTAE. Todos los derechos reservados.",
+    "developed_by": "Desarrollado por AMOXTLI®",
+    "privacy": "Aviso de Privacidad",
+    "terms": "Términos y Condiciones"
+  }
+}

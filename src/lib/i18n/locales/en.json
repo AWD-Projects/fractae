@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "fractae": "FRACTAE",
+    "features": "Features",
+    "beneficios": "Benefits",
+    "planes": "Plans",
+    "faq": "FAQ",
+    "contacto": "Contact",
+    "cta": "Book a demo",
+    "login": "Log in"
+  },
+  "hero": {
+    "label": "— Intelligent residential management",
+    "headline": "The ERP that simplifies the management of residential communities, condominiums, and buildings",
+    "headline_highlight": "simplifies",
+    "subtitle": "FRACTAE is an integrated system that centralizes communication, access, finances, reports, and incidents in one single platform. Leave Excel, WhatsApp, and paper behind.",
+    "cta_primary": "Try now",
+    "cta_secondary": "Contact us",
+    "social_proof": "50+ administrators already use FRACTAE",
+    "metric_label": "Collection this month",
+    "payment_unit": "House 14",
+    "payment_status": "Pending payment"
+  },
+  "why": {
+    "label": "Why FRACTAE?",
+    "title": "Managing a community should not depend on scattered messages, lost files, and manual reports.",
+    "without": "Without FRACTAE",
+    "with": "With FRACTAE",
+    "problems": [
+      { "title": "Manual and scattered processes", "desc": "WhatsApp, Excel, paper, and phone calls create duplicate information, errors, and lack of follow-up." },
+      { "title": "Hard-to-control collections", "desc": "Late payments, manual reconciliations, and limited financial visibility." },
+      { "title": "Disorganized communication", "desc": "Lost announcements, repeated complaints, and residents without clear information." },
+      { "title": "Reactive operation", "desc": "The administrator finds out late, responds late, and documents very little." },
+      { "title": "Access without full traceability", "desc": "Visitors, providers, and residents enter without a reliable operational record." }
+    ],
+    "solutions": [
+      { "title": "Everything centralized in one system", "desc": "Access, payments, communication, reports, and incidents from a single platform." },
+      { "title": "Real-time financial control", "desc": "Check collections, outstanding balances, payments, and reports without relying on manual files." },
+      { "title": "Clear and segmented communication", "desc": "Send announcements to residents, committees, or specific groups without operational noise." },
+      { "title": "Management based on data, not assumptions", "desc": "Dashboards and reports to make decisions with updated information." },
+      { "title": "Secure and traceable access", "desc": "Complete record of entries and exits, visitors, providers, and authorizations." }
+    ]
+  },
+  "features": {
+    "label": "Features",
+    "title": "Everything you need in one system",
+    "subtitle": "Designed for administrators who need real control.",
+    "items": [
+      {
+        "titulo": "Access",
+        "descripcion": "Every entry, perfectly registered",
+        "texto": "Control access for residents, visitors, providers, and authorized personnel with clear, traceable, and searchable records.",
+        "bullets": [
+          "Digital invitations and authorizations",
+          "Entry and exit history with identification",
+          "Records by resident, visitor, or provider"
+        ]
+      },
+      {
+        "titulo": "Finances",
+        "descripcion": "Clear, visible, and organized collections",
+        "texto": "Check payments, balances, and collection progress without depending on spreadsheets or endless reconciliations.",
+        "bullets": [
+          "Account statement by resident",
+          "Follow-up on pending payments",
+          "Financial reports for administration and committee"
+        ]
+      },
+      {
+        "titulo": "Communication",
+        "descripcion": "A formal channel for the entire community",
+        "texto": "Prevent important announcements from getting lost in chats. Centralize communications, documents, and relevant messages.",
+        "bullets": [
+          "General or segmented announcements",
+          "Documents and regulations available",
+          "Communication between administration, committee, and residents"
+        ]
+      },
+      {
+        "titulo": "Reports",
+        "descripcion": "Every request with real follow-up",
+        "texto": "Turn complaints, reports, and incidents into tickets with an owner, status, evidence, and resolution date.",
+        "bullets": [
+          "Report with photo and description",
+          "Follow-up status",
+          "History by house, area, or category"
+        ]
+      },
+      {
+        "titulo": "Reservations",
+        "descripcion": "Amenities organized without conflicts",
+        "texto": "Manage bookings for event rooms, courts, terraces, or common areas with clear rules and visible availability.",
+        "bullets": [
+          "Availability calendar",
+          "Digital confirmations and payments",
+          "Rules by amenity or resident type"
+        ]
+      },
+      {
+        "titulo": "Community participation",
+        "descripcion": "Turn opinions into formal decisions",
+        "texto": "Consult residents, measure positions, and run binding votes under pre-defined rules, with clear results and searchable evidence.",
+        "bullets": [
+          "Digital surveys, consultations, and voting",
+          "Registered participation and transparent results",
+          "Documentary support for committee or assembly decisions"
+        ]
+      }
+    ]
+  },
+  "benefits": {
+    "label": "Benefits",
+    "title": "Transform your community's daily management",
+    "items": [
+      { "titulo": "Less administrative workload", "descripcion": "Automate repetitive tasks and stop depending on scattered files." },
+      { "titulo": "Greater transparency for the committee", "descripcion": "Check reports, payments, incidents, and operational activity from one place." },
+      { "titulo": "Better-informed residents", "descripcion": "Centralize announcements, account statements, documents, and requests." },
+      { "titulo": "Data-based decisions", "descripcion": "Measure collections, incidents, access, and operations with clear reports." },
+      { "titulo": "Complete follow-up", "descripcion": "Every request, payment, or access record is stored with a searchable history." },
+      { "titulo": "An operation ready to scale", "descripcion": "Ideal for small, medium, or large communities with multiple operational needs." }
+    ]
+  },
+  "plans": {
+    "label": "Plans",
+    "title": "Modernize your community management with FRACTAE",
+    "subtitle": "Flexible plans based on the size of your community",
+    "description": "Request a personalized demo and discover how FRACTAE adapts perfectly to your community's needs.",
+    "cta": "Try now",
+    "trust": ["Guided setup", "Flexible modules", "Implementation support"]
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      { "q": "Is FRACTAE for residential communities or also for condominiums?", "a": "FRACTAE is designed for residential communities such as gated communities, horizontal condominiums, residential towers, private communities, and developments with centralized administration." },
+      { "q": "Do I need to install new hardware to use FRACTAE?", "a": "Not necessarily. FRACTAE can start with administrative and digital modules. Access, security, or hardware integrations can be evaluated based on each community's infrastructure or needs." },
+      { "q": "What modules does the platform include?", "a": "FRACTAE can include access, finances, communication, consultations and voting, reports, incidents, amenity reservations, security, and administrative dashboards." },
+      { "q": "Do residents also use the platform?", "a": "Yes. FRACTAE includes an iOS and Android app so residents can check information, receive announcements, submit requests, review payments, or generate access passes, depending on the contracted modules." },
+      { "q": "How long does implementation take?", "a": "It depends on the size of the community and the selected modules. During the demo, we can estimate an implementation roadmap by stages." },
+      { "q": "Does FRACTAE replace WhatsApp and Excel?", "a": "It does not force you to eliminate them immediately, but it does reduce dependency on them by centralizing formal processes, operational information, and reports in one platform." },
+      { "q": "How do I request a demo?", "a": "Complete the contact form and the FRACTAE team will get back to you to understand your community's needs and show you the platform." }
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Schedule a demo for your community and we will reply in less than 24 hours.",
+    "subtitle": "Tell us how your community operates and we will show you how FRACTAE can help centralize access, payments, communication, and reports.",
+    "step1_label": "What is your name?",
+    "step1_placeholder": "Your name",
+    "step2_label": "How would you prefer to be contacted?",
+    "channel_whatsapp": "WhatsApp",
+    "channel_email": "Email",
+    "step3_whatsapp": "Your WhatsApp",
+    "step3_email": "Your email",
+    "step3_placeholder_wa": "+52 55 1234 5678",
+    "step3_placeholder_email": "name@email.com",
+    "continue": "Continue →",
+    "back": "← Back",
+    "submit": "Send →",
+    "success_title": "Done!",
+    "success_subtitle": "The FRACTAE team will be in touch soon."
+  },
+  "footer": {
+    "tagline": "Complete management for residential communities, condominiums, and buildings.",
+    "cta": "Request demo →",
+    "product": "Product",
+    "company": "Company",
+    "contact": "Contact",
+    "email": "info@fractae.mx",
+    "phone": "+55 5544 667788",
+    "copyright": "© 2026 FRACTAE. All rights reserved.",
+    "developed_by": "Developed by AMOXTLI®",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions"
+  }
+}

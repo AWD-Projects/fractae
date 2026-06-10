@@ -1,26 +1,109 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --font-montserrat: "Montserrat", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-montserrat);
+  }
+
+  body {
+    background-color: #FBFBFB;
+    color: #141414;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * { box-sizing: border-box; }
+
+  /* Dot grid with bottom fade — used in hero */
+  .dot-grid {
+    background-image: theme('backgroundImage.dot-grid');
+    background-size: theme('backgroundSize.dot');
+    -webkit-mask-image: linear-gradient(
+      to bottom, black 40%, transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom, black 40%, transparent 100%
+    );
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: #B3B3B3;
+    border-radius: 9999px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply bg-primary text-white font-semibold
+           text-body-sm px-6 py-3 rounded-full
+           transition-all duration-200
+           hover:opacity-90 hover:-translate-y-px
+           hover:shadow-float active:scale-95
+           cursor-pointer;
+  }
+  .btn-secondary {
+    @apply border-2 border-primary text-primary
+           font-semibold text-body-sm px-6 py-3
+           rounded-full transition-all duration-200
+           hover:bg-primary hover:text-white
+           active:scale-95 cursor-pointer;
+  }
+  .btn-ghost {
+    @apply text-primary font-medium text-body-sm
+           transition-all duration-200
+           underline-offset-4 hover:underline
+           cursor-pointer;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-card
+           border border-black/[0.06]
+           shadow-card transition-all duration-200;
+  }
+  .card-hover {
+    @apply card hover:border-primary/20
+           hover:shadow-card-hover
+           hover:-translate-y-0.5;
+  }
+
+  /* Chips */
+  .chip {
+    @apply inline-flex items-center rounded-chip
+           px-3 py-1 text-label-sm font-semibold;
+  }
+
+  /* Inputs */
+  .input-base {
+    @apply w-full px-4 py-3 rounded-sm
+           border border-black/10 bg-white
+           text-body-md text-navy font-normal
+           placeholder:text-gray
+           transition-colors duration-200
+           focus:outline-none
+           focus:border-primary
+           focus:border-[1.5px];
+  }
+
+  /* Label tag */
+  .label-tag {
+    @apply text-label-xs font-semibold
+           text-primary uppercase tracking-widest;
+  }
+
+  /* Section wrapper */
+  .section-wrapper {
+    @apply max-w-[1280px] mx-auto px-10;
+  }
 }
