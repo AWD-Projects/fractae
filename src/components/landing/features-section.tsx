@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
   Shield, DollarSign, MessageSquare, BarChart2, CalendarDays, Users,
@@ -185,6 +186,10 @@ export function FeaturesSection() {
             fading ? "opacity-0 scale-[0.985]" : "opacity-100 scale-100"
           )}
         >
+          <motion.div
+            animate={{ y: [0, -7, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
           <PhoneFrame>
             <Image
               key={activeIdx}
@@ -196,6 +201,7 @@ export function FeaturesSection() {
               priority={activeIdx === 0}
             />
           </PhoneFrame>
+          </motion.div>
         </div>
       </div>
     </section>

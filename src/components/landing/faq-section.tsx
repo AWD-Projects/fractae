@@ -17,16 +17,17 @@ export function FAQSection() {
         </h2>
       </FadeIn>
 
-      <FadeIn direction="up" delay={0.15} className="flex flex-col gap-5 w-full">
+      <div className="flex flex-col gap-5 w-full">
         {items.map((item, i) => (
-          <FAQItem
-            key={i}
-            question={item.q}
-            answer={item.a}
-            defaultOpen={i === 0}
-          />
+          <FadeIn key={i} direction="up" delay={0.05 + i * 0.06}>
+            <FAQItem
+              question={item.q}
+              answer={item.a}
+              defaultOpen={i === 0}
+            />
+          </FadeIn>
         ))}
-      </FadeIn>
+      </div>
     </section>
   );
 }

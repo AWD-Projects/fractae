@@ -24,26 +24,30 @@ export function WhySection() {
 
       <div className="flex w-full mt-8">
 
-        <FadeIn direction="right" delay={0.2} className="flex flex-col flex-1 gap-6">
+        <FadeIn direction="right" delay={0.15} className="flex flex-col flex-1 gap-6">
           <p className="text-[28px] font-medium text-navy text-center tracking-[-2px] leading-[1.2]">
             {t("without")}
           </p>
           <div className="flex flex-col gap-5">
             {problems.map((item, i) => (
-              <ComparisonItem key={i} type="problem" title={item.title} description={item.desc} />
+              <FadeIn key={i} direction="up" delay={0.2 + i * 0.07}>
+                <ComparisonItem type="problem" title={item.title} description={item.desc} />
+              </FadeIn>
             ))}
           </div>
         </FadeIn>
 
         <div className="w-px bg-black/[0.06] mx-8 self-stretch" />
 
-        <FadeIn direction="left" delay={0.2} className="flex flex-col flex-1 gap-6">
+        <FadeIn direction="left" delay={0.15} className="flex flex-col flex-1 gap-6">
           <p className="text-[28px] font-medium text-navy text-center tracking-[-2px] leading-[1.2]">
             {t("with")}
           </p>
           <div className="flex flex-col gap-5">
             {solutions.map((item, i) => (
-              <ComparisonItem key={i} type="solution" title={item.title} description={item.desc} />
+              <FadeIn key={i} direction="up" delay={0.2 + i * 0.07}>
+                <ComparisonItem type="solution" title={item.title} description={item.desc} />
+              </FadeIn>
             ))}
           </div>
         </FadeIn>

@@ -74,26 +74,36 @@ export function HeroSection() {
         <div className="flex flex-col justify-center gap-4 flex-1 pl-4">
 
           <motion.div {...fadeRight(0.45)}>
-            <div className="flex gap-2.5 h-[200px]">
-              <div className="flex-1 relative rounded-chip overflow-hidden" style={{ maxWidth: 280 }}>
-                <Image src={hero1} alt="" fill className="object-cover object-center" />
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            >
+              <div className="flex gap-2.5 h-[200px]">
+                <div className="flex-1 relative rounded-chip overflow-hidden" style={{ maxWidth: 280 }}>
+                  <Image src={hero1} alt="" fill className="object-cover object-center" />
+                </div>
+                <MetricCard value="95%" label={t("metric_label")} className="w-[198px] h-full" />
               </div>
-              <MetricCard value="95%" label={t("metric_label")} className="w-[198px] h-full" />
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div {...fadeRight(0.65)}>
-            <div className="flex gap-2.5 h-[200px]">
-              <PaymentCard
-                amount="$25,000"
-                unit={t("payment_unit")}
-                status={t("payment_status")}
-                className="w-[198px] h-full"
-              />
-              <div className="flex-1 relative rounded-chip overflow-hidden" style={{ maxWidth: 280 }}>
-                <Image src={hero2} alt="" fill className="object-cover object-center" />
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
+            >
+              <div className="flex gap-2.5 h-[200px]">
+                <PaymentCard
+                  amount="$25,000"
+                  unit={t("payment_unit")}
+                  status={t("payment_status")}
+                  className="w-[198px] h-full"
+                />
+                <div className="flex-1 relative rounded-chip overflow-hidden" style={{ maxWidth: 280 }}>
+                  <Image src={hero2} alt="" fill className="object-cover object-center" />
+                </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

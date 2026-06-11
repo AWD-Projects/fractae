@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/molecules/navbar";
 import { ScrollRestorer } from "@/components/molecules/scroll-restorer";
-import { SnapScroller } from "@/components/molecules/snap-scroller";
+import { SmoothScrollInit } from "@/components/molecules/snap-scroller";
 import { HeroSection } from "@/components/landing/hero-section";
 import { WhySection } from "@/components/landing/why-section";
 import { FeaturesSection } from "@/components/landing/features-section";
@@ -15,6 +15,7 @@ export default function LandingPage() {
   return (
     <>
       <ScrollRestorer />
+      <SmoothScrollInit />
       <Navbar />
 
       <div
@@ -27,50 +28,55 @@ export default function LandingPage() {
         }}
       />
 
-      <SnapScroller>
-        <div className="h-screen flex flex-col items-center justify-center">
-          <div className="w-full max-w-[1280px] px-[60px]">
-            <HeroSection />
-          </div>
+      {/* Hero — full viewport */}
+      <div className="min-h-screen flex flex-col items-center justify-center pt-[64px]">
+        <div className="w-full max-w-[1280px] px-[60px]">
+          <HeroSection />
         </div>
+      </div>
 
-        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="w-full max-w-[1280px] px-[60px]">
-            <WhySection />
-          </div>
+      {/* Why */}
+      <div className="flex flex-col items-center py-[110px]">
+        <div className="w-full max-w-[1280px] px-[60px]">
+          <WhySection />
         </div>
+      </div>
 
-        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="w-full max-w-[1280px] px-[60px]">
-            <FeaturesSection />
-          </div>
+      {/* Features */}
+      <div className="flex flex-col items-center py-[110px]">
+        <div className="w-full max-w-[1280px] px-[60px]">
+          <FeaturesSection />
         </div>
+      </div>
 
-        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="w-full max-w-[1280px] px-[60px]">
-            <BenefitsSection />
-          </div>
+      {/* Benefits */}
+      <div className="flex flex-col items-center py-[110px]">
+        <div className="w-full max-w-[1280px] px-[60px]">
+          <BenefitsSection />
         </div>
+      </div>
 
-        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="w-full max-w-[1280px] px-[60px]">
-            <PlansSection />
-          </div>
+      {/* Plans */}
+      <div className="flex flex-col items-center py-[110px]">
+        <div className="w-full max-w-[1280px] px-[60px]">
+          <PlansSection />
         </div>
+      </div>
 
-        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="w-full max-w-[1280px] px-[60px]">
-            <FAQSection />
-          </div>
+      {/* FAQ */}
+      <div className="flex flex-col items-center py-[110px]">
+        <div className="w-full max-w-[1280px] px-[60px]">
+          <FAQSection />
         </div>
+      </div>
 
-        <div className="h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
-          <div className="w-full max-w-[1280px] px-[60px]">
-            <ContactSection />
-            <FooterSection />
-          </div>
+      {/* Contact + Footer */}
+      <div className="flex flex-col items-center py-[110px]">
+        <div className="w-full max-w-[1280px] px-[60px]">
+          <ContactSection />
+          <FooterSection />
         </div>
-      </SnapScroller>
+      </div>
     </>
   );
 }

@@ -33,27 +33,33 @@ export function BenefitsSection() {
         <SectionHeading title={t("title")} align="center" size="lg" />
       </FadeIn>
 
-      <FadeIn direction="up" delay={0.2} className="w-full grid grid-cols-3 gap-5 mt-4">
+      <div className="w-full grid grid-cols-3 gap-5 mt-4">
         {beneficios.map((b, i) => {
           const BIcon = ICON_MAP[b.icon] ?? Zap;
           const item = items[i];
           return (
-            <motion.div
-              key={b.id}
-              className="p-6 rounded-card"
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <FeatureCard
-                Icon={BIcon}
-                title={item.titulo}
-                description={item.descripcion}
-                size="sm"
-              />
-            </motion.div>
+            <FadeIn key={b.id} direction="up" delay={0.1 + i * 0.08}>
+              <motion.div
+                className="p-6 rounded-card border border-transparent"
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  borderColor: "rgba(6,34,68,0.07)",
+                  boxShadow: "0 12px 32px rgba(6,34,68,0.07)",
+                }}
+                transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              >
+                <FeatureCard
+                  Icon={BIcon}
+                  title={item.titulo}
+                  description={item.descripcion}
+                  size="sm"
+                />
+              </motion.div>
+            </FadeIn>
           );
         })}
-      </FadeIn>
+      </div>
     </section>
   );
 }

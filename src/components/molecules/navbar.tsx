@@ -66,15 +66,12 @@ export function Navbar() {
   const [activeId, setActiveId] = useState("inicio");
 
   useEffect(() => {
-    const root = document.getElementById("snap-root");
-    if (!root) return;
-    const onScroll = () => setScrolled(root.scrollTop > 10);
-    root.addEventListener("scroll", onScroll, { passive: true });
-    return () => root.removeEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    const root = document.getElementById("snap-root");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -82,8 +79,8 @@ export function Navbar() {
         });
       },
       {
-        root,
-        rootMargin: "-20% 0px -70% 0px",
+        root: null,
+        rootMargin: "-15% 0px -75% 0px",
         threshold: 0,
       }
     );

@@ -11,10 +11,10 @@ interface FadeInProps {
 }
 
 const INITIAL: Record<string, { opacity: number; y?: number; x?: number }> = {
-  up:    { opacity: 0, y: 36 },
-  down:  { opacity: 0, y: -36 },
-  left:  { opacity: 0, x: 36 },
-  right: { opacity: 0, x: -36 },
+  up:    { opacity: 0, y: 24 },
+  down:  { opacity: 0, y: -24 },
+  left:  { opacity: 0, x: 24 },
+  right: { opacity: 0, x: -24 },
   none:  { opacity: 0 },
 };
 
@@ -31,15 +31,15 @@ export function FadeIn({
   className,
   delay = 0,
   direction = "up",
-  duration = 0.55,
+  duration = 0.7,
 }: FadeInProps) {
   return (
     <motion.div
       className={className}
       initial={INITIAL[direction]}
       whileInView={ANIMATE[direction]}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration, delay, ease: [0.4, 0, 0.2, 1] }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
     >
       {children}
     </motion.div>
