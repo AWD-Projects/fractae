@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { contactSchema, type ContactFormData } from "@/lib/validations/contact";
 import { cn } from "@/lib/utils";
-import type { ContactCanal } from "@/types";
 
 type Step = 1 | 2 | 3;
 
@@ -105,6 +104,7 @@ export function ContactForm() {
             size="md"
             style={{ width: 172 }}
             onClick={() => {
+              // eslint-disable-next-line react-hooks/incompatible-library
               if (watch("nombre").length >= 2) setStep(2);
             }}
           >

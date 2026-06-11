@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Logo } from "@/components/ui/logo";
@@ -48,7 +47,7 @@ export function FooterSection() {
                 size="sm"
                 className="w-fit"
                 onClick={() =>
-                  (window as Record<string, unknown>).__snapTo?.("contacto")
+                  (window as unknown as { __snapTo?: (id: string) => void }).__snapTo?.("contacto")
                 }
               >
                 {t("cta")}

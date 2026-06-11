@@ -52,9 +52,9 @@ export function PlansSection() {
                 variant="primary"
                 size="md"
                 style={{ width: 172 }}
-                className="bg-background text-navy hover:bg-background/90 hover:text-navy border-0"
+                className="bg-background text-navy hover:bg-background hover:text-navy border-0 btn-shine"
                 onClick={() =>
-                  (window as Record<string, unknown>).__snapTo?.("contacto")
+                  (window as unknown as { __snapTo?: (id: string) => void }).__snapTo?.("contacto")
                 }
               >
                 {t("cta")}

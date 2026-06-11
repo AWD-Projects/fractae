@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
+import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { Logo } from "@/components/ui/logo";
@@ -94,7 +95,10 @@ export function Navbar() {
   }, []);
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 1.0, ease: [0.4, 0, 0.2, 1] }}
       className={cn(
         "fixed top-0 inset-x-0 z-50 w-full bg-background",
         "px-10 py-3",
@@ -114,7 +118,7 @@ export function Navbar() {
               active={activeId === key}
               onClick={(e) => {
                 e.preventDefault();
-                (window as Record<string, unknown>).__snapTo?.(key);
+                (window as unknown as { __snapTo?: (id: string) => void }).__snapTo?.(key);
               }}
             >
               {t(key)}
@@ -139,6 +143,6 @@ export function Navbar() {
           </svg>
         </button>
       </nav>
-    </header>
+    </motion.header>
   );
 }
