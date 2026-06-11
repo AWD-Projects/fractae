@@ -13,7 +13,7 @@ export function HeroSection() {
   const t = useTranslations("hero");
 
   return (
-    <section id="inicio" className="w-full py-[120px]">
+    <section id="inicio" className="w-full">
       <div className="flex gap-0 w-full">
 
         {/* Left side */}

@@ -31,9 +31,9 @@ export function FooterSection() {
   ];
 
   return (
-    <footer className="w-full pt-0 pb-[60px]">
+    <footer className="w-full pt-6">
       <FadeIn direction="up" delay={0.1}>
-        <div className="w-full bg-white rounded-[48px] px-[60px] py-[60px]">
+        <div className="w-full bg-white rounded-[48px] px-[60px] py-[36px]">
 
           <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1.5fr] gap-10">
 
@@ -48,7 +48,7 @@ export function FooterSection() {
                 size="sm"
                 className="w-fit"
                 onClick={() =>
-                  document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+                  (window as Record<string, unknown>).__snapTo?.("contacto")
                 }
               >
                 {t("cta")}

@@ -11,8 +11,8 @@ export async function POST(req: Request) {
       contactSchema.parse(body);
 
     await resend.emails.send({
-      from: 'FRACTAE <noreply@fractae.com>',
-      to: ['hola@fractae.com'],
+      from: 'FRACTAE <noreply@amoxtli.tech>',
+      to: ['hello@amoxtli.tech'],
       subject: `Nueva solicitud de demo — ${nombre}`,
       html: `
         <h2>Nueva solicitud de demo</h2>

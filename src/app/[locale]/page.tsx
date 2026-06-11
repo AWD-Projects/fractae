@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/molecules/navbar";
 import { ScrollRestorer } from "@/components/molecules/scroll-restorer";
+import { SnapScroller } from "@/components/molecules/snap-scroller";
 import { HeroSection } from "@/components/landing/hero-section";
 import { WhySection } from "@/components/landing/why-section";
 import { FeaturesSection } from "@/components/landing/features-section";
@@ -14,10 +15,8 @@ export default function LandingPage() {
   return (
     <>
       <ScrollRestorer />
-      {/* Fixed navbar */}
       <Navbar />
 
-      {/* Dots pattern — fixed, scaled down to 60% width so dots appear smaller */}
       <div
         className="fixed inset-0 z-0 pointer-events-none opacity-[0.08]"
         style={{
@@ -28,54 +27,50 @@ export default function LandingPage() {
         }}
       />
 
-      {/* Snap scroll container */}
-      <main
-        id="snap-root"
-        className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth relative z-10"
-      >
-        <div className="snap-start min-h-screen flex flex-col items-center justify-center">
+      <SnapScroller>
+        <div className="h-screen flex flex-col items-center justify-center">
           <div className="w-full max-w-[1280px] px-[60px]">
             <HeroSection />
           </div>
         </div>
 
-        <div className="snap-start h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="w-full max-w-[1280px] px-[60px]">
             <WhySection />
           </div>
         </div>
 
-        <div className="snap-start min-h-screen flex flex-col items-center justify-center">
+        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="w-full max-w-[1280px] px-[60px]">
             <FeaturesSection />
           </div>
         </div>
 
-        <div className="snap-start min-h-screen flex flex-col items-center justify-center">
+        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="w-full max-w-[1280px] px-[60px]">
             <BenefitsSection />
           </div>
         </div>
 
-        <div className="snap-start min-h-screen flex flex-col items-center justify-center">
+        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="w-full max-w-[1280px] px-[60px]">
             <PlansSection />
           </div>
         </div>
 
-        <div className="snap-start min-h-screen flex flex-col items-center justify-center">
+        <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="w-full max-w-[1280px] px-[60px]">
             <FAQSection />
           </div>
         </div>
 
-        <div className="snap-start min-h-screen flex flex-col items-center justify-center">
+        <div className="h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
           <div className="w-full max-w-[1280px] px-[60px]">
             <ContactSection />
             <FooterSection />
           </div>
         </div>
-      </main>
+      </SnapScroller>
     </>
   );
 }

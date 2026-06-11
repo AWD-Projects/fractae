@@ -9,7 +9,7 @@ export function FAQSection() {
   const items = t.raw("items") as Array<{ q: string; a: string }>;
 
   return (
-    <section id="faq" className="w-full flex flex-col gap-8 py-[120px]">
+    <section id="faq" className="w-full flex flex-col gap-8">
 
       <FadeIn direction="up" delay={0}>
         <h2 className="text-[36px] font-medium text-navy leading-[1.3] tracking-[-2px]">

@@ -108,7 +108,15 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-8">
           {NAV_ITEMS.map(({ key, href }) => (
-            <NavLink key={key} href={href} active={activeId === key}>
+            <NavLink
+              key={key}
+              href={href}
+              active={activeId === key}
+              onClick={(e) => {
+                e.preventDefault();
+                (window as Record<string, unknown>).__snapTo?.(key);
+              }}
+            >
               {t(key)}
             </NavLink>
           ))}

@@ -12,7 +12,7 @@ export function WhySection() {
   const solutions = t.raw("solutions") as Array<{ title: string; desc: string }>;
 
   return (
-    <section id="fractae" className="w-full flex flex-col items-center gap-3 py-[60px]">
+    <section id="fractae" className="w-full flex flex-col items-center gap-3">
 
       <FadeIn direction="up" delay={0}>
         <Chip variant="default">{t("label")}</Chip>
@@ -22,9 +22,9 @@ export function WhySection() {
         <SectionHeading title={t("title")} align="center" size="lg" />
       </FadeIn>
 
-      <div className="flex w-full mt-2">
+      <div className="flex w-full mt-8">
 
-        <FadeIn direction="right" delay={0.2} className="flex flex-col flex-1 gap-6 py-[48px]">
+        <FadeIn direction="right" delay={0.2} className="flex flex-col flex-1 gap-6">
           <p className="text-[28px] font-medium text-navy text-center tracking-[-2px] leading-[1.2]">
             {t("without")}
           </p>
@@ -37,7 +37,7 @@ export function WhySection() {
 
         <div className="w-px bg-black/[0.06] mx-8 self-stretch" />
 
-        <FadeIn direction="left" delay={0.2} className="flex flex-col flex-1 gap-6 py-[48px]">
+        <FadeIn direction="left" delay={0.2} className="flex flex-col flex-1 gap-6">
           <p className="text-[28px] font-medium text-navy text-center tracking-[-2px] leading-[1.2]">
             {t("with")}
           </p>

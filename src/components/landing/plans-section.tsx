@@ -13,7 +13,7 @@ export function PlansSection() {
   const trust = t.raw("trust") as string[];
 
   return (
-    <section id="planes" className="w-full mb-[120px] mt-[120px]">
+    <section id="planes" className="w-full">
       <div
         className="relative w-full rounded-[48px] overflow-hidden py-[84px] px-0"
         style={{ minHeight: 584 }}
@@ -54,7 +54,7 @@ export function PlansSection() {
                 style={{ width: 172 }}
                 className="bg-background text-navy hover:bg-background/90 hover:text-navy border-0"
                 onClick={() =>
-                  document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+                  (window as Record<string, unknown>).__snapTo?.("contacto")
                 }
               >
                 {t("cta")}

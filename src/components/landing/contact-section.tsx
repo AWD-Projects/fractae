@@ -9,7 +9,7 @@ export function ContactSection() {
   const t = useTranslations("contact");
 
   return (
-    <section id="contacto" className="w-full flex flex-col items-center gap-3 py-[120px]">
+    <section id="contacto" className="w-full flex flex-col items-center gap-3">
 
       <FadeIn direction="up" delay={0}>
         <Chip variant="default">{t("label")}</Chip>
@@ -27,7 +27,7 @@ export function ContactSection() {
         </p>
       </FadeIn>
 
-      <FadeIn direction="up" delay={0.25} className="w-full max-w-[560px] pt-10">
+      <FadeIn direction="up" delay={0.25} className="w-full max-w-[560px] pt-6">
         <ContactForm />
       </FadeIn>
     </section>

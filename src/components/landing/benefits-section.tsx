@@ -23,7 +23,7 @@ export function BenefitsSection() {
   const items = t.raw("items") as BenefitItem[];
 
   return (
-    <section id="beneficios" className="w-full flex flex-col items-center gap-3 pb-[120px] pt-[120px]">
+    <section id="beneficios" className="w-full flex flex-col items-center gap-3">
 
       <FadeIn direction="up" delay={0}>
         <Chip variant="default">{t("label")}</Chip>
