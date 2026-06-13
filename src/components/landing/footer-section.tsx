@@ -4,7 +4,6 @@ import { Mail, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/ui/fade-in";
 
 export function FooterSection() {
   const t = useTranslations("footer");
@@ -31,7 +30,6 @@ export function FooterSection() {
 
   return (
     <footer className="w-full pt-6">
-      <FadeIn direction="up" delay={0.1}>
         <div className="w-full bg-white rounded-[48px] px-[60px] py-[36px]">
 
           <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1.5fr] gap-10">
@@ -39,7 +37,7 @@ export function FooterSection() {
             {/* Column 1 — Logo + tagline + CTA */}
             <div className="flex flex-col gap-5">
               <Logo width={140} />
-              <p className="text-[14px] text-navy/60 font-normal leading-[1.6] max-w-[220px]">
+              <p className="text-[14px] text-navy font-normal leading-[1.6] max-w-[220px]">
                 {t("tagline")}
               </p>
               <Button
@@ -62,7 +60,7 @@ export function FooterSection() {
               <ul className="flex flex-col gap-3">
                 {productLinks.map((link) => (
                   <li key={link.href}>
-                    <a href={link.href} className="text-[14px] text-navy/70 hover:text-navy transition-colors duration-150">
+                    <a href={link.href} className="text-[14px] text-navy hover:text-navy transition-colors duration-150">
                       {link.label}
                     </a>
                   </li>
@@ -78,7 +76,7 @@ export function FooterSection() {
               <ul className="flex flex-col gap-3">
                 {companyLinks.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-[14px] text-navy/70 hover:text-navy transition-colors duration-150">
+                    <a href={link.href} className="text-[14px] text-navy hover:text-navy transition-colors duration-150">
                       {link.label}
                     </a>
                   </li>
@@ -94,7 +92,7 @@ export function FooterSection() {
               <ul className="flex flex-col gap-3">
                 {legalLinks.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-[14px] text-navy/70 hover:text-navy transition-colors duration-150">
+                    <a href={link.href} className="text-[14px] text-navy hover:text-navy transition-colors duration-150">
                       {link.label}
                     </a>
                   </li>
@@ -110,14 +108,14 @@ export function FooterSection() {
               <div className="flex flex-col gap-3">
                 <a
                   href={`mailto:${t("email")}`}
-                  className="flex items-center gap-2.5 text-[14px] text-navy/70 hover:text-navy transition-colors duration-150"
+                  className="flex items-center gap-2.5 text-[14px] text-navy hover:text-navy transition-colors duration-150"
                 >
                   <Mail size={14} strokeWidth={1.5} className="flex-shrink-0" />
                   {t("email")}
                 </a>
                 <a
                   href={`tel:${t("phone").replace(/\s/g, "")}`}
-                  className="flex items-center gap-2.5 text-[14px] text-navy/70 hover:text-navy transition-colors duration-150"
+                  className="flex items-center gap-2.5 text-[14px] text-navy hover:text-navy transition-colors duration-150"
                 >
                   <Phone size={14} strokeWidth={1.5} className="flex-shrink-0" />
                   {t("phone")}
@@ -128,15 +126,14 @@ export function FooterSection() {
 
           {/* Bottom bar */}
           <div className="flex items-center justify-between mt-10 pt-7 border-t border-navy/[0.08]">
-            <span className="text-[12px] text-navy/40 font-normal">
+            <span className="text-[12px] text-navy font-normal">
               {t("copyright")}
             </span>
-            <span className="text-[12px] text-navy/40 font-normal">
+            <span className="text-[12px] text-navy font-normal">
               {t("developed_by")}
             </span>
           </div>
         </div>
-      </FadeIn>
     </footer>
   );
 }

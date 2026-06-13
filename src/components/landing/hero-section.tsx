@@ -4,9 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { MetricCard, PaymentCard } from "@/components/molecules/hero-stats-card";
-import hero1 from "@/assets/hero/hero1.png";
-import hero2 from "@/assets/hero/hero2.jpeg";
+import { AccessCard, ActiveUsersCard, MetricCard, PaymentCard } from "@/components/molecules/hero-stats-card";
 
 const EASE = [0.4, 0, 0.2, 1] as const;
 
@@ -79,9 +77,11 @@ export function HeroSection() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
             >
               <div className="flex gap-2.5 h-[200px]">
-                <div className="flex-1 relative rounded-chip overflow-hidden" style={{ maxWidth: 280 }}>
-                  <Image src={hero1} alt="" fill className="object-cover object-center" />
-                </div>
+                <ActiveUsersCard
+                  label={t("active_users_label")}
+                  badge={t("active_users_badge")}
+                  className="flex-1 h-full max-w-[280px]"
+                />
                 <MetricCard value="95%" label={t("metric_label")} className="w-[198px] h-full" />
               </div>
             </motion.div>
@@ -99,9 +99,12 @@ export function HeroSection() {
                   status={t("payment_status")}
                   className="w-[198px] h-full"
                 />
-                <div className="flex-1 relative rounded-chip overflow-hidden" style={{ maxWidth: 280 }}>
-                  <Image src={hero2} alt="" fill className="object-cover object-center" />
-                </div>
+                <AccessCard
+                  visitor={t("access_visitor")}
+                  unit={t("access_unit")}
+                  time={t("access_time")}
+                  className="flex-1 h-full max-w-[280px]"
+                />
               </div>
             </motion.div>
           </motion.div>

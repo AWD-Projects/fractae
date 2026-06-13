@@ -20,7 +20,13 @@
     "social_proof": "50+ administradores ya usan FRACTAE",
     "metric_label": "Cobranza este mes",
     "payment_unit": "Casa 14",
-    "payment_status": "Pendiente de pago"
+    "payment_status": "Pendiente de pago",
+    "active_users_label": "Usuarios activos",
+    "active_users_badge": "Residentes 99.44%",
+    "access_granted": "Acceso concedido",
+    "access_visitor": "Carlos Mendoza",
+    "access_unit": "Casa 14",
+    "access_time": "Hoy · 09:32 am"
   },
   "why": {
     "label": "¿Por qué FRACTAE?",
@@ -167,7 +173,7 @@
     "company": "Empresa",
     "contact": "Contacto",
     "email": "info@fractae.mx",
-    "phone": "+55 5544 667788",
+    "phone": "+52 5553351999",
     "copyright": "© 2026 FRACTAE. Todos los derechos reservados.",
     "developed_by": "Desarrollado por AMOXTLI®",
     "privacy": "Aviso de Privacidad",

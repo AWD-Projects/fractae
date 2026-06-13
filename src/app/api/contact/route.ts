@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: 'FRACTAE <noreply@amoxtli.tech>',
-      to: ['hello@amoxtli.tech'],
+      to: ['sales@fractae.mx'],
       subject: `Nueva solicitud de demo — ${nombre}`,
       html: `
         <h2>Nueva solicitud de demo</h2>
