@@ -129,9 +129,14 @@ export function FooterSection() {
             <span className="text-[12px] text-navy font-normal">
               {t("copyright")}
             </span>
-            <span className="text-[12px] text-navy font-normal">
+            <a
+              href="https://www.amoxtli.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[12px] text-navy font-normal hover:underline"
+            >
               {t("developed_by")}
-            </span>
+            </a>
           </div>
         </div>
     </footer>
