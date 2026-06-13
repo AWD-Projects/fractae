@@ -30,27 +30,26 @@ const FEATURE_IMAGES = [
 
 const INTERVAL_MS = 3500;
 
-function PhoneFrame({ children }: { children: React.ReactNode }) {
+function PhoneFrame({ children, scale = 1 }: { children: React.ReactNode; scale?: number }) {
+  const w = Math.round(276 * scale);
+  const h = Math.round(576 * scale);
   return (
-    <div className="relative flex-shrink-0" style={{ width: 276, height: 576 }}>
-      {/* Silver metallic rim */}
+    <div className="relative flex-shrink-0" style={{ width: w, height: h }}>
       <div className="absolute inset-0 rounded-[40px] bg-zinc-500 shadow-[0_28px_72px_rgba(0,0,0,0.40)]" />
-      {/* Black glass body */}
       <div className="absolute inset-[2px] rounded-[38px] bg-zinc-950" />
-      {/* Screen */}
       <div className="absolute inset-[9px] rounded-[31px] bg-black overflow-hidden">
         {children}
       </div>
-      {/* Dynamic island */}
-      <div className="absolute top-[20px] left-1/2 -translate-x-1/2 w-[86px] h-[24px] bg-zinc-950 rounded-full z-10" />
-      {/* Power button (right) */}
-      <div className="absolute right-[-2px] top-[108px] w-[3px] h-[52px] bg-zinc-400 rounded-r-full" />
-      {/* Mute toggle (left) */}
-      <div className="absolute left-[-2px] top-[86px] w-[3px] h-[29px] bg-zinc-400 rounded-l-full" />
-      {/* Volume up (left) */}
-      <div className="absolute left-[-2px] top-[130px] w-[3px] h-[52px] bg-zinc-400 rounded-l-full" />
-      {/* Volume down (left) */}
-      <div className="absolute left-[-2px] top-[196px] w-[3px] h-[52px] bg-zinc-400 rounded-l-full" />
+      <div className="absolute top-[20px] left-1/2 -translate-x-1/2 w-[86px] h-[24px] bg-zinc-950 rounded-full z-10"
+        style={{ width: Math.round(86 * scale), top: Math.round(20 * scale) }} />
+      <div className="absolute right-[-2px] bg-zinc-400 rounded-r-full"
+        style={{ top: Math.round(108 * scale), width: 3, height: Math.round(52 * scale) }} />
+      <div className="absolute left-[-2px] bg-zinc-400 rounded-l-full"
+        style={{ top: Math.round(86 * scale), width: 3, height: Math.round(29 * scale) }} />
+      <div className="absolute left-[-2px] bg-zinc-400 rounded-l-full"
+        style={{ top: Math.round(130 * scale), width: 3, height: Math.round(52 * scale) }} />
+      <div className="absolute left-[-2px] bg-zinc-400 rounded-l-full"
+        style={{ top: Math.round(196 * scale), width: 3, height: Math.round(52 * scale) }} />
     </div>
   );
 }
@@ -111,7 +110,7 @@ export function FeaturesSection() {
         <Chip variant="default">{t("label")}</Chip>
       </FadeIn>
       <FadeIn direction="up" delay={0.08}>
-        <h2 className="text-[40px] font-bold text-navy text-center leading-[1.2] tracking-[-2px] max-w-[700px]">
+        <h2 className="text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-navy text-center leading-[1.2] tracking-[-1px] lg:tracking-[-2px] max-w-[700px]">
           {t("title")}
         </h2>
       </FadeIn>
@@ -121,13 +120,39 @@ export function FeaturesSection() {
         </p>
       </FadeIn>
 
-      {/* Two-column body */}
-      <div className="flex w-full gap-16 mt-10 items-center">
+      {/* Body: stacks on mobile, side-by-side on desktop */}
+      <div className="flex flex-col lg:flex-row w-full gap-10 lg:gap-16 mt-10 items-center">
+
+        {/* Phone mockup — top on mobile, right on desktop */}
+        <div
+          className={cn(
+            "flex lg:hidden items-center justify-center w-full",
+            "transition-all duration-[220ms] ease-out",
+            fading ? "opacity-0 scale-[0.985]" : "opacity-100 scale-100"
+          )}
+        >
+          <motion.div
+            animate={{ y: [0, -7, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <PhoneFrame scale={0.72}>
+              <Image
+                key={activeIdx}
+                src={FEATURE_IMAGES[activeIdx]}
+                alt={active.titulo}
+                width={258}
+                height={558}
+                className="w-full h-full object-cover"
+                priority={activeIdx === 0}
+              />
+            </PhoneFrame>
+          </motion.div>
+        </div>
 
         {/* Left: content */}
         <div
           className={cn(
-            "w-[445px] flex-shrink-0 flex flex-col justify-center gap-5",
+            "w-full lg:w-[445px] lg:flex-shrink-0 flex flex-col justify-center gap-5",
             "transition-all duration-[220ms] ease-out",
             fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
           )}
@@ -141,7 +166,7 @@ export function FeaturesSection() {
             </span>
           </div>
 
-          <h3 className="text-[30px] font-bold text-navy leading-[1.18] tracking-[-1.5px]">
+          <h3 className="text-[24px] lg:text-[30px] font-bold text-navy leading-[1.18] tracking-[-1px] lg:tracking-[-1.5px]">
             {active.descripcion}
           </h3>
 
@@ -178,10 +203,10 @@ export function FeaturesSection() {
           </div>
         </div>
 
-        {/* Right: phone mockup */}
+        {/* Right: phone mockup — desktop only */}
         <div
           className={cn(
-            "flex-1 flex items-center justify-center",
+            "hidden lg:flex flex-1 items-center justify-center",
             "transition-all duration-[220ms] ease-out",
             fading ? "opacity-0 scale-[0.985]" : "opacity-100 scale-100"
           )}
@@ -190,17 +215,17 @@ export function FeaturesSection() {
             animate={{ y: [0, -7, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
-          <PhoneFrame>
-            <Image
-              key={activeIdx}
-              src={FEATURE_IMAGES[activeIdx]}
-              alt={active.titulo}
-              width={258}
-              height={558}
-              className="w-full h-full object-cover"
-              priority={activeIdx === 0}
-            />
-          </PhoneFrame>
+            <PhoneFrame>
+              <Image
+                key={activeIdx}
+                src={FEATURE_IMAGES[activeIdx]}
+                alt={active.titulo}
+                width={258}
+                height={558}
+                className="w-full h-full object-cover"
+                priority={activeIdx === 0}
+              />
+            </PhoneFrame>
           </motion.div>
         </div>
       </div>

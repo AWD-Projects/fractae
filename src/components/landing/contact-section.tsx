@@ -16,7 +16,7 @@ export function ContactSection() {
       </FadeIn>
 
       <FadeIn direction="up" delay={0.1}>
-        <h2 className="text-[36px] font-medium text-navy text-center leading-[1.3] tracking-[-2px] max-w-[800px]">
+        <h2 className="text-[26px] sm:text-[30px] lg:text-[36px] font-medium text-navy text-center leading-[1.3] tracking-[-1px] lg:tracking-[-2px] max-w-[800px]">
           {t("title")}
         </h2>
       </FadeIn>

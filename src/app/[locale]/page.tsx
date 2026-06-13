@@ -30,49 +30,49 @@ export default function LandingPage() {
 
       {/* Hero — full viewport */}
       <div className="min-h-screen flex flex-col items-center justify-center pt-[64px]">
-        <div className="w-full max-w-[1280px] px-[60px]">
+        <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
           <HeroSection />
         </div>
       </div>
 
       {/* Why */}
-      <div className="flex flex-col items-center py-[110px]">
-        <div className="w-full max-w-[1280px] px-[60px]">
+      <div className="flex flex-col items-center py-16 lg:py-[110px]">
+        <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
           <WhySection />
         </div>
       </div>
 
       {/* Features */}
-      <div className="flex flex-col items-center py-[110px]">
-        <div className="w-full max-w-[1280px] px-[60px]">
+      <div className="flex flex-col items-center py-16 lg:py-[110px]">
+        <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
           <FeaturesSection />
         </div>
       </div>
 
       {/* Benefits */}
-      <div className="flex flex-col items-center py-[110px]">
-        <div className="w-full max-w-[1280px] px-[60px]">
+      <div className="flex flex-col items-center py-16 lg:py-[110px]">
+        <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
           <BenefitsSection />
         </div>
       </div>
 
       {/* Plans */}
-      <div className="flex flex-col items-center py-[110px]">
-        <div className="w-full max-w-[1280px] px-[60px]">
+      <div className="flex flex-col items-center py-16 lg:py-[110px]">
+        <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
           <PlansSection />
         </div>
       </div>
 
       {/* FAQ */}
-      <div className="flex flex-col items-center py-[110px]">
-        <div className="w-full max-w-[1280px] px-[60px]">
+      <div className="flex flex-col items-center py-16 lg:py-[110px]">
+        <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
           <FAQSection />
         </div>
       </div>
 
       {/* Contact + Footer */}
-      <div className="flex flex-col items-center py-[110px]">
-        <div className="w-full max-w-[1280px] px-[60px]">
+      <div className="flex flex-col items-center py-16 lg:py-[110px]">
+        <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
           <ContactSection />
           <FooterSection />
         </div>
