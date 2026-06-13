@@ -129,6 +129,9 @@ export function Navbar() {
             variant="primary"
             size="md"
             style={{ width: 172 }}
+            onClick={() =>
+              (window as unknown as { __snapTo?: (id: string) => void }).__snapTo?.("contacto")
+            }
           >
             {t("cta")}
           </Button>
