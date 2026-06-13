@@ -22,10 +22,10 @@ export function WhySection() {
         <SectionHeading title={t("title")} align="center" size="lg" />
       </FadeIn>
 
-      <div className="flex w-full mt-8">
+      <div className="flex flex-col lg:flex-row w-full mt-8 gap-10 lg:gap-0">
 
-        <FadeIn direction="right" delay={0.15} className="flex flex-col flex-1 gap-6">
-          <p className="text-[28px] font-medium text-navy text-center tracking-[-2px] leading-[1.2]">
+        <FadeIn direction="up" delay={0.15} className="flex flex-col flex-1 gap-6 lg:pr-8">
+          <p className="text-[22px] lg:text-[28px] font-medium text-navy text-center tracking-[-1px] lg:tracking-[-2px] leading-[1.2]">
             {t("without")}
           </p>
           <div className="flex flex-col gap-5">
@@ -37,10 +37,13 @@ export function WhySection() {
           </div>
         </FadeIn>
 
-        <div className="w-px bg-black/[0.06] mx-8 self-stretch" />
+        {/* Vertical divider — desktop only */}
+        <div className="hidden lg:block w-px bg-black/[0.06] mx-8 self-stretch" />
+        {/* Horizontal divider — mobile only */}
+        <div className="block lg:hidden h-px w-full bg-black/[0.06]" />
 
-        <FadeIn direction="left" delay={0.15} className="flex flex-col flex-1 gap-6">
-          <p className="text-[28px] font-medium text-navy text-center tracking-[-2px] leading-[1.2]">
+        <FadeIn direction="up" delay={0.15} className="flex flex-col flex-1 gap-6 lg:pl-8">
+          <p className="text-[22px] lg:text-[28px] font-medium text-navy text-center tracking-[-1px] lg:tracking-[-2px] leading-[1.2]">
             {t("with")}
           </p>
           <div className="flex flex-col gap-5">

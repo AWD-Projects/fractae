@@ -12,7 +12,7 @@ export function FAQSection() {
     <section id="faq" className="w-full flex flex-col gap-8">
 
       <FadeIn direction="up" delay={0}>
-        <h2 className="text-[36px] font-medium text-navy leading-[1.3] tracking-[-2px]">
+        <h2 className="text-[26px] sm:text-[30px] lg:text-[36px] font-medium text-navy leading-[1.3] tracking-[-1px] lg:tracking-[-2px]">
           {t("title")}
         </h2>
       </FadeIn>
