@@ -82,11 +82,11 @@ export function ActiveUsersCard({
         className
       )}
     >
-      <div className="px-6 pt-5 flex flex-col gap-1">
-        <span className="text-[13px] font-normal text-navy/60 leading-none">{label}</span>
-        <div className="flex items-baseline gap-2 mt-1">
-          <span className="text-[32px] font-bold text-navy leading-none">2840</span>
-          <span className="text-[12px] font-medium text-navy/60">{badge}</span>
+      <div className="px-4 lg:px-6 pt-4 lg:pt-5 flex flex-col gap-1">
+        <span className="text-[11px] lg:text-[13px] font-normal text-navy/60 leading-none">{label}</span>
+        <div className="flex items-baseline gap-1.5 mt-1 flex-wrap">
+          <span className="text-[22px] lg:text-[32px] font-bold text-navy leading-none">2840</span>
+          <span className="text-[10px] lg:text-[12px] font-medium text-navy/60">{badge}</span>
         </div>
       </div>
 
@@ -129,8 +129,9 @@ export function AccessCard({
       </div>
 
       {/* QR code centered */}
-      <div className="flex justify-center items-center flex-1 py-2">
-        <QRCode size={82} />
+      <div className="flex justify-center items-center flex-1 py-1">
+        <div className="block lg:hidden"><QRCode size={58} /></div>
+        <div className="hidden lg:block"><QRCode size={82} /></div>
       </div>
 
       {/* Date centered at bottom */}
@@ -157,27 +158,34 @@ export function MetricCard({
   return (
     <div
       className={cn(
-        "flex flex-col justify-center gap-3 rounded-chip bg-secondary",
-        "px-7 py-2.5",
+        "flex flex-col justify-center gap-2 lg:gap-3 rounded-chip bg-secondary",
+        "px-4 lg:px-7 py-2.5",
         className
       )}
     >
-      <div className="w-[39px] h-[39px] flex items-center justify-center">
+      <div className="w-7 h-7 lg:w-[39px] lg:h-[39px] flex items-center justify-center">
+        <TrendingUp
+          size={20}
+          strokeWidth={2}
+          className="text-background lg:hidden"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         <TrendingUp
           size={32.5}
           strokeWidth={2}
-          className="text-background"
+          className="text-background hidden lg:block"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       </div>
       <p
-        className="text-[28px] font-semibold text-background leading-[0.714] tracking-[0.1px]"
+        className="text-[20px] lg:text-[28px] font-semibold text-background leading-tight tracking-[0.1px]"
         style={{ textAlignVertical: "middle" } as React.CSSProperties}
       >
         {value}
       </p>
-      <p className="text-[22px] text-background font-normal leading-[0.909] tracking-[0.1px]">
+      <p className="text-[14px] lg:text-[22px] text-background font-normal leading-snug tracking-[0.1px]">
         {label}
       </p>
     </div>
@@ -208,18 +216,18 @@ export function PaymentCard({
         className
       )}
     >
-      <div className="flex items-center justify-between gap-2.5 w-[116px]">
-        <span className="text-[10px] font-medium text-navy/50 leading-[2] tracking-[0.1px] whitespace-nowrap">
+      <div className="flex items-center justify-between gap-1 w-full px-1">
+        <span className="text-[9px] lg:text-[10px] font-medium text-navy/50 leading-[2] tracking-[0.1px] truncate">
           {ownerName}
         </span>
-        <span className="text-[10px] font-normal text-navy/50 leading-[2] tracking-[0.1px] text-right whitespace-nowrap">
+        <span className="text-[9px] lg:text-[10px] font-normal text-navy/50 leading-[2] tracking-[0.1px] text-right truncate">
           {unit}
         </span>
       </div>
-      <p className="text-[32px] font-bold text-navy text-center leading-[0.625] tracking-[0.1px] w-full">
+      <p className="text-[22px] lg:text-[32px] font-bold text-navy text-center leading-tight tracking-[0.1px] w-full">
         {amount}
       </p>
-      <p className="text-[12px] font-semibold text-warning text-center leading-[1.667] tracking-[0.1px]">
+      <p className="text-[11px] lg:text-[12px] font-semibold text-warning text-center leading-[1.667] tracking-[0.1px]">
         {status}
       </p>
     </div>
