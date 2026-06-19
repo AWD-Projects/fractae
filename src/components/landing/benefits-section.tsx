@@ -35,7 +35,7 @@ export function BenefitsSection() {
 
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
         {beneficios.map((b, i) => {
-          const BIcon = ICON_MAP[b.icon] ?? Zap;
+          const BIcon = ICON_MAP[b.icono] ?? Zap;
           const item = items[i];
           return (
             <FadeIn key={b.id} direction="up" delay={0.1 + i * 0.08}>

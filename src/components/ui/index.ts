@@ -14,3 +14,6 @@ export { SectionHeading } from "./section-heading";
 export type { SectionHeadingProps } from "./section-heading";
 
 export { Logo } from "./logo";
+
+export { Textarea } from "./textarea";
+export type { TextareaProps } from "./textarea";

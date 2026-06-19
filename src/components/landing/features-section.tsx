@@ -3,14 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import {
-  Shield, DollarSign, MessageSquare, BarChart2, CalendarDays, Users,
-  type LucideIcon,
-} from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { Shield, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { Chip } from "@/components/ui/chip";
 import { FadeIn } from "@/components/ui/fade-in";
-import { funcionalidades } from "@/data/mock";
 import { cn } from "@/lib/utils";
 import accessImg from "@/assets/features/access.jpeg";
 import financeImg from "@/assets/features/finance.jpeg";
@@ -19,16 +16,39 @@ import reportsImg from "@/assets/features/reports.jpeg";
 import reservationsImg from "@/assets/features/reservations.jpeg";
 import communityImg from "@/assets/features/community.jpeg";
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  Shield, DollarSign, MessageSquare, BarChart2, CalendarDays, Users,
-};
+function resolveIcon(name: string): LucideIcon {
+  const icon = (LucideIcons as Record<string, unknown>)[name];
+  if (icon != null && typeof icon !== "string" && typeof icon !== "number" && typeof icon !== "boolean") {
+    return icon as LucideIcon;
+  }
+  return Shield;
+}
 
-const FEATURE_IMAGES = [
+const STATIC_IMAGES = [
   accessImg, financeImg, communicationImg,
   reportsImg, reservationsImg, communityImg,
 ];
 
 const INTERVAL_MS = 3500;
+
+type DbFeature = {
+  titulo: string;
+  descripcion: string;
+  bullets: string[] | null;
+  icono: string;
+  imagen_url: string | null;
+};
+
+type FeatureItem = {
+  titulo: string;
+  descripcion: string;
+  texto: string;
+  bullets: string[];
+};
+
+interface FeaturesSectionProps {
+  dbFeatures?: DbFeature[];
+}
 
 function PhoneFrame({ children, scale = 1 }: { children: React.ReactNode; scale?: number }) {
   const w = Math.round(276 * scale);
@@ -54,16 +74,13 @@ function PhoneFrame({ children, scale = 1 }: { children: React.ReactNode; scale?
   );
 }
 
-type FeatureItem = {
-  titulo: string;
-  descripcion: string;
-  texto: string;
-  bullets: string[];
-};
-
-export function FeaturesSection() {
+export function FeaturesSection({ dbFeatures = [] }: FeaturesSectionProps) {
   const t = useTranslations("features");
-  const items = t.raw("items") as FeatureItem[];
+  const i18nItems = t.raw("items") as FeatureItem[];
+
+  const usingDb = dbFeatures.length > 0;
+  const count = usingDb ? dbFeatures.length : i18nItems.length;
+
   const [activeIdx, setActiveIdx] = useState(0);
   const [fading, setFading] = useState(false);
   const [loopKey, setLoopKey] = useState(0);
@@ -75,7 +92,7 @@ export function FeaturesSection() {
   useEffect(() => {
     const id = setInterval(() => {
       if (fadingRef.current) return;
-      const next = (activeIdxRef.current + 1) % items.length;
+      const next = (activeIdxRef.current + 1) % count;
       fadingRef.current = true;
       setFading(true);
       setTimeout(() => {
@@ -85,7 +102,7 @@ export function FeaturesSection() {
       }, 220);
     }, INTERVAL_MS);
     return () => clearInterval(id);
-  }, [loopKey, items.length]);
+  }, [loopKey, count]);
 
   const goTo = (i: number) => {
     if (i === activeIdx || fadingRef.current) return;
@@ -99,8 +116,15 @@ export function FeaturesSection() {
     setLoopKey(k => k + 1);
   };
 
-  const active = items[activeIdx];
-  const ActiveIcon = ICON_MAP[funcionalidades[activeIdx].icon] ?? Shield;
+  const db = dbFeatures[activeIdx];
+  const i18n = i18nItems[activeIdx];
+  const activeTitulo = usingDb ? db.titulo : i18n.titulo;
+  const activeH3 = usingDb ? db.descripcion : i18n.descripcion;
+  const activeParagraph = usingDb ? null : i18n.texto;
+  const activeBullets = usingDb ? (db.bullets ?? []) : i18n.bullets;
+  const ActiveIcon = resolveIcon(db?.icono ?? '');
+  const activeImageUrl = db?.imagen_url ?? null;
+  const activeStaticImage = STATIC_IMAGES[activeIdx];
 
   return (
     <section id="features" className="w-full flex flex-col items-center gap-3">
@@ -120,10 +144,10 @@ export function FeaturesSection() {
         </p>
       </FadeIn>
 
-      {/* Body: stacks on mobile, side-by-side on desktop */}
+      {/* Body */}
       <div className="flex flex-col lg:flex-row w-full gap-10 lg:gap-16 mt-10 items-center">
 
-        {/* Phone mockup — top on mobile, right on desktop */}
+        {/* Phone mockup — top on mobile */}
         <div
           className={cn(
             "flex lg:hidden items-center justify-center w-full",
@@ -136,15 +160,27 @@ export function FeaturesSection() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             <PhoneFrame scale={0.72}>
-              <Image
-                key={activeIdx}
-                src={FEATURE_IMAGES[activeIdx]}
-                alt={active.titulo}
-                width={258}
-                height={558}
-                className="w-full h-full object-cover"
-                priority={activeIdx === 0}
-              />
+              {activeImageUrl ? (
+                <Image
+                  key={`db-${activeIdx}`}
+                  src={activeImageUrl}
+                  alt={activeTitulo}
+                  width={258}
+                  height={558}
+                  className="w-full h-full object-cover"
+                  priority={activeIdx === 0}
+                />
+              ) : (
+                <Image
+                  key={`static-${activeIdx}`}
+                  src={activeStaticImage}
+                  alt={activeTitulo}
+                  width={258}
+                  height={558}
+                  className="w-full h-full object-cover"
+                  priority={activeIdx === 0}
+                />
+              )}
             </PhoneFrame>
           </motion.div>
         </div>
@@ -162,20 +198,22 @@ export function FeaturesSection() {
               <ActiveIcon size={18} strokeWidth={1.5} className="text-navy/70" />
             </div>
             <span className="text-[11px] font-semibold text-navy/50 uppercase tracking-[0.1em]">
-              {active.titulo}
+              {activeTitulo}
             </span>
           </div>
 
           <h3 className="text-[24px] lg:text-[30px] font-bold text-navy leading-[1.18] tracking-[-1px] lg:tracking-[-1.5px]">
-            {active.descripcion}
+            {activeH3}
           </h3>
 
-          <p className="text-[15px] text-navy/65 font-normal leading-[1.65]">
-            {active.texto}
-          </p>
+          {activeParagraph && (
+            <p className="text-[15px] text-navy/65 font-normal leading-[1.65]">
+              {activeParagraph}
+            </p>
+          )}
 
           <ul className="flex flex-col gap-2.5">
-            {active.bullets.map((bullet, i) => (
+            {activeBullets.map((bullet, i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="mt-[7px] w-[5px] h-[5px] rounded-full bg-primary flex-shrink-0" />
                 <span className="text-[14px] text-navy/80 font-normal leading-[1.55]">
@@ -187,7 +225,7 @@ export function FeaturesSection() {
 
           {/* Dots */}
           <div className="flex items-center gap-2 mt-2">
-            {items.map((_, i) => (
+            {Array.from({ length: count }, (_, i) => i).map((_, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i)}
@@ -216,15 +254,27 @@ export function FeaturesSection() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             <PhoneFrame>
-              <Image
-                key={activeIdx}
-                src={FEATURE_IMAGES[activeIdx]}
-                alt={active.titulo}
-                width={258}
-                height={558}
-                className="w-full h-full object-cover"
-                priority={activeIdx === 0}
-              />
+              {activeImageUrl ? (
+                <Image
+                  key={`db-desk-${activeIdx}`}
+                  src={activeImageUrl}
+                  alt={activeTitulo}
+                  width={258}
+                  height={558}
+                  className="w-full h-full object-cover"
+                  priority={activeIdx === 0}
+                />
+              ) : (
+                <Image
+                  key={`static-desk-${activeIdx}`}
+                  src={activeStaticImage}
+                  alt={activeTitulo}
+                  width={258}
+                  height={558}
+                  className="w-full h-full object-cover"
+                  priority={activeIdx === 0}
+                />
+              )}
             </PhoneFrame>
           </motion.div>
         </div>
