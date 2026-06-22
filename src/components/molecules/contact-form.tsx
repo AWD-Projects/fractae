@@ -88,6 +88,7 @@ export function ContactForm() {
             size="md"
             className="w-full max-w-[172px]"
             onClick={() => {
+              // eslint-disable-next-line react-hooks/incompatible-library
               if (watch("nombre").length >= 2) setStep(2);
             }}
           >

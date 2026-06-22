@@ -67,6 +67,16 @@ export async function getAdminBeneficios() {
   return data ?? []
 }
 
+export async function getAdminPlanesConfig() {
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('planes_config')
+    .select('*')
+    .single()
+  if (error) throw new Error(error.message)
+  return data
+}
+
 export async function getLeads() {
   const supabase = await createClient()
   const { data, error } = await supabase

@@ -208,3 +208,10 @@ export async function updateLead(id: string, data: LeadUpdate) {
   if (error) throw new Error(error.message)
   revalidatePath('/[locale]/admin/leads', 'page')
 }
+
+export async function deleteLead(id: string) {
+  const supabase = createAdminClient()
+  const { error } = await supabase.from('leads').delete().eq('id', id)
+  if (error) throw new Error(error.message)
+  revalidatePath('/[locale]/admin/leads', 'page')
+}

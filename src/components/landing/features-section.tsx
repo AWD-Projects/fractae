@@ -24,6 +24,12 @@ function resolveIcon(name: string): LucideIcon {
   return Shield;
 }
 
+function FeatureIcon({ name, ...props }: { name: string; size?: number; strokeWidth?: number; className?: string }) {
+  const Icon = resolveIcon(name);
+  // eslint-disable-next-line react-hooks/static-components
+  return <Icon {...props} />;
+}
+
 const STATIC_IMAGES = [
   accessImg, financeImg, communicationImg,
   reportsImg, reservationsImg, communityImg,
@@ -122,7 +128,7 @@ export function FeaturesSection({ dbFeatures = [] }: FeaturesSectionProps) {
   const activeH3 = usingDb ? db.descripcion : i18n.descripcion;
   const activeParagraph = usingDb ? null : i18n.texto;
   const activeBullets = usingDb ? (db.bullets ?? []) : i18n.bullets;
-  const ActiveIcon = resolveIcon(db?.icono ?? '');
+  const activeIconName = db?.icono ?? '';
   const activeImageUrl = db?.imagen_url ?? null;
   const activeStaticImage = STATIC_IMAGES[activeIdx];
 
@@ -195,7 +201,7 @@ export function FeaturesSection({ dbFeatures = [] }: FeaturesSectionProps) {
         >
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-navy/[0.06] flex items-center justify-center flex-shrink-0">
-              <ActiveIcon size={18} strokeWidth={1.5} className="text-navy/70" />
+              <FeatureIcon name={activeIconName} size={18} strokeWidth={1.5} className="text-navy/70" />
             </div>
             <span className="text-[11px] font-semibold text-navy/50 uppercase tracking-[0.1em]">
               {activeTitulo}

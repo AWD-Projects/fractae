@@ -12,10 +12,10 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Dashboard",       href: "",                icon: Home,        exact: true },
+  { label: "Leads",           href: "leads",            icon: Users },
   { label: "Funcionalidades", href: "funcionalidades", icon: LayoutGrid },
   { label: "Beneficios",      href: "beneficios",      icon: Sparkles },
   { label: "Planes",          href: "planes",           icon: CreditCard },
-  { label: "Leads",           href: "leads",            icon: Users },
 ];
 
 interface AdminSidebarProps {

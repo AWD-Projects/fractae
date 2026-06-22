@@ -1,26 +1,40 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import {
-  Zap, Eye, Bell, BarChart2, CheckCheck, LayoutGrid,
-  type LucideIcon,
-} from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { Zap, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Chip } from "@/components/ui/chip";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FeatureCard } from "@/components/molecules/feature-card";
 import { FadeIn } from "@/components/ui/fade-in";
-import { beneficios } from "@/data/mock";
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  Zap, Eye, Bell, BarChart2, CheckCheck, LayoutGrid,
+function resolveIcon(name: string): LucideIcon {
+  const icon = (LucideIcons as Record<string, unknown>)[name];
+  if (icon != null && typeof icon !== "string" && typeof icon !== "number" && typeof icon !== "boolean") {
+    return icon as LucideIcon;
+  }
+  return Zap;
+}
+
+type DbBeneficio = {
+  titulo: string;
+  descripcion: string;
+  icono: string;
 };
 
 type BenefitItem = { titulo: string; descripcion: string };
 
-export function BenefitsSection() {
+interface BenefitsSectionProps {
+  dbBeneficios?: DbBeneficio[];
+}
+
+export function BenefitsSection({ dbBeneficios = [] }: BenefitsSectionProps) {
   const t = useTranslations("benefits");
-  const items = t.raw("items") as BenefitItem[];
+  const i18nItems = t.raw("items") as BenefitItem[];
+
+  const usingDb = dbBeneficios.length > 0;
+  const items = usingDb ? dbBeneficios : i18nItems;
 
   return (
     <section id="beneficios" className="w-full flex flex-col items-center gap-3">
@@ -34,11 +48,12 @@ export function BenefitsSection() {
       </FadeIn>
 
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
-        {beneficios.map((b, i) => {
-          const BIcon = ICON_MAP[b.icono] ?? Zap;
-          const item = items[i];
+        {items.map((item, i) => {
+          const Icon = usingDb
+            ? resolveIcon((item as DbBeneficio).icono)
+            : Zap;
           return (
-            <FadeIn key={b.id} direction="up" delay={0.1 + i * 0.08}>
+            <FadeIn key={i} direction="up" delay={0.1 + i * 0.08}>
               <motion.div
                 className="p-6 rounded-card border border-transparent"
                 whileHover={{
@@ -50,7 +65,7 @@ export function BenefitsSection() {
                 transition={{ type: "spring", stiffness: 280, damping: 22 }}
               >
                 <FeatureCard
-                  Icon={BIcon}
+                  Icon={Icon}
                   title={item.titulo}
                   description={item.descripcion}
                   size="sm"

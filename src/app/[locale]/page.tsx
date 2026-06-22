@@ -10,7 +10,7 @@ import { PlansSection } from "@/components/landing/plans-section";
 import { FAQSection } from "@/components/landing/faq-section";
 import { ContactSection } from "@/components/landing/contact-section";
 import { FooterSection } from "@/components/landing/footer-section";
-import { getFuncionalidades, getPlanesConfig } from '@/lib/supabase/queries'
+import { getFuncionalidades, getBeneficios, getPlanesConfig } from '@/lib/supabase/queries'
 import type { SupportedLocale } from '@/types'
 import dotsPattern from "@/assets/bg-images/dots.png";
 
@@ -18,6 +18,7 @@ export default async function LandingPage() {
   const locale = await getLocale() as SupportedLocale
 
   const funcionalidades = await getFuncionalidades(locale).catch(() => [])
+  const beneficios      = await getBeneficios(locale).catch(() => [])
   const planesConfig    = await getPlanesConfig(locale).catch(() => null)
 
   return (
@@ -66,7 +67,11 @@ export default async function LandingPage() {
       {/* Benefits */}
       <div className="flex flex-col items-center py-16 lg:py-[110px]">
         <div className="w-full max-w-[1280px] px-5 sm:px-10 lg:px-[60px]">
-          <BenefitsSection />
+          <BenefitsSection dbBeneficios={beneficios.map(b => ({
+            titulo: b.titulo,
+            descripcion: b.descripcion,
+            icono: b.icono,
+          }))} />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import Link from "next/link";
+import { getLocale } from "next-intl/server";
 import { LayoutGrid, Sparkles, Users } from "lucide-react";
 import type { Database } from "@/types/database";
 
@@ -25,6 +26,15 @@ async function getDashboardData() {
     leads:           leadsCount.count ?? 0,
     recentLeads:     recentLeads.data ?? [],
   };
+}
+
+function buildContactUrl(canal: "whatsapp" | "email", contacto: string, nombre: string): string {
+  const msg = `Hola ${nombre}, te escribimos de FRACTAE con respecto a tu interés en conocer nuestra plataforma de gestión residencial. Quedamos a tu disposición para resolver cualquier duda y coordinar una demostración. ¡Saludos!`;
+  if (canal === "whatsapp") {
+    const phone = contacto.replace(/\D/g, "");
+    return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  }
+  return `mailto:${contacto}?subject=${encodeURIComponent("Tu solicitud en FRACTAE")}&body=${encodeURIComponent(msg)}`;
 }
 
 const estadoBadge: Record<string, { label: string; bg: string; color: string }> = {
@@ -76,7 +86,11 @@ function StatCard({ label, value, icon: Icon }: { label: string; value: number; 
 }
 
 export default async function AdminDashboard() {
-  const { funcionalidades, beneficios, leads, recentLeads } = await getDashboardData();
+  const [{ funcionalidades, beneficios, leads, recentLeads }, locale] = await Promise.all([
+    getDashboardData(),
+    getLocale(),
+  ]);
+  const leadsHref = `/${locale}/admin/leads`;
 
   return (
     <div className="flex flex-col gap-6">
@@ -118,7 +132,7 @@ export default async function AdminDashboard() {
             Solicitudes recientes
           </span>
           <Link
-            href="leads"
+            href={leadsHref}
             style={{
               fontFamily: "var(--font-montserrat), sans-serif",
               fontSize: 13,
@@ -137,19 +151,21 @@ export default async function AdminDashboard() {
           className="grid"
           style={{
             gridTemplateColumns: "1.5fr 1fr 1fr 1fr 1fr",
-            background: "rgba(244,243,243,0.3)",
-            padding: "0",
+            background: "rgba(244,243,243,0.6)",
+            borderBottom: "1px solid rgba(179,179,179,0.15)",
           }}
         >
           {["Nombre", "Canal", "Fecha", "Estado", "Acción"].map((h, i) => (
             <div
               key={h}
               style={{
-                padding: "16px 24px",
+                padding: "10px 24px",
                 fontFamily: "var(--font-montserrat), sans-serif",
-                fontSize: 12,
-                fontWeight: 600,
+                fontSize: 11,
+                fontWeight: 700,
                 color: "#b3b3b3",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
                 textAlign: i === 4 ? "right" : "left",
               }}
             >
@@ -213,17 +229,20 @@ export default async function AdminDashboard() {
                   </span>
                 </div>
                 <div style={{ padding: "16px 24px", textAlign: "right" }}>
-                  <Link
-                    href="leads"
+                  <a
+                    href={buildContactUrl(lead.canal, lead.contacto, lead.nombre)}
+                    target={lead.canal === "whatsapp" ? "_blank" : undefined}
+                    rel={lead.canal === "whatsapp" ? "noopener noreferrer" : undefined}
                     style={{
                       fontFamily: "var(--font-montserrat), sans-serif",
                       fontSize: 12,
                       fontWeight: 600,
                       color: "#00399d",
+                      textDecoration: "none",
                     }}
                   >
                     Contactar
-                  </Link>
+                  </a>
                 </div>
               </div>
             );
