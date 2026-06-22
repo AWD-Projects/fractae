@@ -189,8 +189,9 @@ function LeadModal({ lead, onClose, onSaved }: {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div style={{
-        background: "#fff", borderRadius: 16, padding: 32,
+        background: "#fff", borderRadius: 16, padding: 24,
         width: "100%", maxWidth: 480,
+        maxHeight: "90vh", overflowY: "auto",
         display: "flex", flexDirection: "column", gap: 20,
       }}>
         <div>
@@ -291,8 +292,10 @@ function DeleteConfirm({ nombre, onCancel, onConfirm, loading }: {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-6"
       style={{ background: "rgba(0,0,0,0.45)" }}>
       <div style={{
-        background: "#fff", borderRadius: 16, padding: 32,
-        width: "100%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 20,
+        background: "#fff", borderRadius: 16, padding: 24,
+        width: "100%", maxWidth: 400,
+        maxHeight: "90vh", overflowY: "auto",
+        display: "flex", flexDirection: "column", gap: 20,
       }}>
         <h2 style={{ fontFamily: FONT, fontSize: 16, fontWeight: 700, color: "#062244" }}>
           Eliminar lead
@@ -439,7 +442,7 @@ export function LeadsList({ initialData }: { initialData: Lead[] }) {
         </div>
 
         {/* Search + filters row */}
-        <div className="flex items-center justify-between" style={{ gap: 16, flexWrap: "wrap" }}>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between" style={{ gap: 12 }}>
           {/* Search */}
           <div className="flex items-center" style={{
             gap: 8, background: "#fbfbfb",
@@ -460,7 +463,7 @@ export function LeadsList({ initialData }: { initialData: Lead[] }) {
           </div>
 
           {/* Filter tabs */}
-          <div className="flex items-center" style={{ gap: 6 }}>
+          <div className="flex items-center" style={{ gap: 6, overflowX: "auto", WebkitOverflowScrolling: "touch" as React.CSSProperties["WebkitOverflowScrolling"] }}>
             {FILTER_TABS.map(({ key, label }) => (
               <button
                 key={key}
@@ -474,6 +477,7 @@ export function LeadsList({ initialData }: { initialData: Lead[] }) {
                   color: filterTab === key ? "#fff" : "#b3b3b3",
                   cursor: "pointer", transition: "all 150ms",
                   whiteSpace: "nowrap",
+                  flexShrink: 0,
                 }}
               >
                 {label}
@@ -482,8 +486,8 @@ export function LeadsList({ initialData }: { initialData: Lead[] }) {
           </div>
         </div>
 
-        {/* Table */}
-        <div style={{
+        {/* Table — desktop (sm+) */}
+        <div className="hidden sm:block" style={{
           background: "#fbfbfb", borderRadius: 12,
           border: "1px solid #e0e0e0", overflow: "hidden",
         }}>
@@ -512,67 +516,81 @@ export function LeadsList({ initialData }: { initialData: Lead[] }) {
                 alignItems: "center",
               }}
             >
-              {/* Nombre */}
               <div style={{ ...CELL_STYLE, fontWeight: 600, color: "#062244" }}>
-                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {lead.nombre}
-                </span>
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{lead.nombre}</span>
               </div>
-
-              {/* Canal */}
               <div style={{ ...CELL_STYLE, padding: "14px 8px", justifyContent: "center" }}>
                 <Tooltip label={lead.canal === "whatsapp" ? "Abrir WhatsApp" : "Enviar email"}>
                   <CanalIcon canal={lead.canal} contacto={lead.contacto} nombre={lead.nombre} />
                 </Tooltip>
               </div>
-
-              {/* Contacto */}
               <div style={{ ...CELL_STYLE }}>
-                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {lead.contacto}
-                </span>
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{lead.contacto}</span>
               </div>
-
-              {/* Fecha */}
-              <div style={{ ...CELL_STYLE, color: "#b3b3b3" }}>
-                {formatDate(lead.created_at)}
-              </div>
-
-              {/* Estado */}
+              <div style={{ ...CELL_STYLE, color: "#b3b3b3" }}>{formatDate(lead.created_at)}</div>
               <div style={{ ...CELL_STYLE }}>
                 <Tooltip label="Clic para cambiar estado">
                   <EstadoBadge estado={lead.estado} onClick={() => handleEstadoToggle(lead)} />
                 </Tooltip>
               </div>
-
-              {/* Acciones */}
               <div style={{ ...CELL_STYLE, gap: 8 }}>
-                <button
-                  type="button"
-                  onClick={() => setDetailLead(lead)}
-                  title="Ver detalle"
-                  style={{
-                    width: 32, height: 32, borderRadius: 9999,
-                    background: "rgba(22,163,74,0.1)",
-                    border: "none", cursor: "pointer",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}
-                >
+                <button type="button" onClick={() => setDetailLead(lead)} title="Ver detalle"
+                  style={{ width: 32, height: 32, borderRadius: 9999, background: "rgba(22,163,74,0.1)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Eye size={14} strokeWidth={1.75} color="#16a34a" />
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setDeleteTarget(lead)}
-                  title="Eliminar"
-                  style={{
-                    width: 32, height: 32, borderRadius: 9999,
-                    background: "rgba(186,26,26,0.08)",
-                    border: "none", cursor: "pointer",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}
-                >
+                <button type="button" onClick={() => setDeleteTarget(lead)} title="Eliminar"
+                  style={{ width: 32, height: 32, borderRadius: 9999, background: "rgba(186,26,26,0.08)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Trash2 size={14} strokeWidth={1.75} color="rgba(186,26,26,0.7)" />
                 </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Cards — mobile (<sm) */}
+        <div className="flex sm:hidden flex-col" style={{ gap: 8 }}>
+          {paginated.length === 0 ? (
+            <div style={{ padding: "48px 0", textAlign: "center", fontFamily: FONT, fontSize: 13, color: "#b3b3b3" }}>
+              No hay solicitudes que coincidan.
+            </div>
+          ) : paginated.map(lead => (
+            <div
+              key={lead.id}
+              style={{
+                background: "#fbfbfb", borderRadius: 12,
+                border: "1px solid #e0e0e0", padding: "12px 14px",
+                display: "flex", alignItems: "center", gap: 10,
+              }}
+            >
+              {/* Canal icon */}
+              <CanalIcon canal={lead.canal} contacto={lead.contacto} nombre={lead.nombre} />
+
+              {/* Info */}
+              <div className="flex flex-col flex-1 min-w-0" style={{ gap: 2 }}>
+                <span style={{ fontFamily: FONT, fontSize: 13, fontWeight: 600, color: "#062244", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {lead.nombre}
+                </span>
+                <span style={{ fontFamily: FONT, fontSize: 11, color: "#b3b3b3", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {lead.contacto}
+                </span>
+                <span style={{ fontFamily: FONT, fontSize: 10, color: "#b3b3b3" }}>
+                  {formatDate(lead.created_at)}
+                </span>
+              </div>
+
+              {/* Estado + actions */}
+              <div className="flex flex-col items-end shrink-0" style={{ gap: 8 }}>
+                <EstadoBadge estado={lead.estado} onClick={() => handleEstadoToggle(lead)} />
+                <div className="flex items-center" style={{ gap: 6 }}>
+                  <button type="button" onClick={() => setDetailLead(lead)}
+                    style={{ width: 28, height: 28, borderRadius: 9999, background: "rgba(22,163,74,0.1)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Eye size={13} strokeWidth={1.75} color="#16a34a" />
+                  </button>
+                  <button type="button" onClick={() => setDeleteTarget(lead)}
+                    style={{ width: 28, height: 28, borderRadius: 9999, background: "rgba(186,26,26,0.08)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Trash2 size={13} strokeWidth={1.75} color="rgba(186,26,26,0.7)" />
+                  </button>
+                </div>
               </div>
             </div>
           ))}

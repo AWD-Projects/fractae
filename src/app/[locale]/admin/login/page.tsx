@@ -36,11 +36,11 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex flex-col md:flex-row">
 
-      {/* ── LEFT PANEL ── */}
+      {/* ── LEFT PANEL — desktop only ── */}
       <div
-        className="flex-1 relative flex items-center justify-center overflow-hidden"
+        className="hidden md:relative md:flex md:flex-1 items-center justify-center overflow-hidden"
         style={{ background: "#062244", padding: "0 48px" }}
       >
         {/* Atmospheric blur spheres */}
@@ -87,9 +87,14 @@ export default function AdminLoginPage() {
       {/* ── RIGHT PANEL ── */}
       <div
         className="flex-1 flex items-center justify-center"
-        style={{ background: "#ffffff", padding: "0 24px" }}
+        style={{ background: "#ffffff", padding: "32px 24px" }}
       >
-        <div style={{ width: 380, gap: 32 }} className="flex flex-col">
+        <div style={{ width: "100%", maxWidth: 380, gap: 32 }} className="flex flex-col">
+
+          {/* Logo — mobile only */}
+          <div className="flex md:hidden justify-center" style={{ marginBottom: 4 }}>
+            <Logo width={160} />
+          </div>
 
           {/* Header */}
           <div className="flex flex-col" style={{ gap: 7 }}>

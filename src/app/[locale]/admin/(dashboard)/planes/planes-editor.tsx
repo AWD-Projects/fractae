@@ -202,21 +202,21 @@ export function PlanesEditor({ config }: { config: PlanesConfigRow }) {
       </div>
 
       {/* Two-column layout */}
-      <div className="flex items-start" style={{ gap: 24 }}>
+      <div className="flex flex-col md:flex-row items-start" style={{ gap: 24 }}>
 
         {/* ── Left: form ─────────────────────────── */}
         <div
+          className="w-full md:sticky"
           style={{
             flex: 1,
             minWidth: 0,
             background: "#fff",
             borderRadius: 12,
             border: "1px solid #e0e0e0",
-            padding: 32,
+            padding: 24,
             display: "flex",
             flexDirection: "column",
             gap: 24,
-            position: "sticky",
             top: 24,
           }}
         >
@@ -378,7 +378,14 @@ export function PlanesEditor({ config }: { config: PlanesConfigRow }) {
         </div>
 
         {/* ── Right: live preview ─────────────────── */}
-        <div className="flex flex-col flex-1 min-w-0" style={{ gap: 12 }}>
+        <div className="flex flex-col w-full md:flex-1 min-w-0" style={{ gap: 12 }}>
+          <span style={{
+            fontFamily: "var(--font-montserrat), sans-serif",
+            fontSize: 11, fontWeight: 700, color: "#b3b3b3",
+            letterSpacing: "0.06em", textTransform: "uppercase",
+          }}>
+            Vista previa
+          </span>
           <PlansSection data={previewData} />
         </div>
 

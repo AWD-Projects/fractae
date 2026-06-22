@@ -106,12 +106,12 @@ function SortableRow({
         <GripVertical size={16} strokeWidth={1.75} />
       </button>
 
-      {/* Thumbnail */}
-      <div style={{
+      {/* Thumbnail — hidden on mobile */}
+      <div className="hidden sm:flex" style={{
         width: 64, height: 40, borderRadius: 4, flexShrink: 0, overflow: "hidden",
         background: item.visible ? "#eeeeed" : "#f4f3f3",
         border: "1px solid rgba(196,198,213,0.2)",
-        display: "flex", alignItems: "center", justifyContent: "center",
+        alignItems: "center", justifyContent: "center",
       }}>
         {item.imagen_url && (
           <Image src={item.imagen_url} alt={item.titulo} width={64} height={40}
@@ -138,7 +138,7 @@ function SortableRow({
       </div>
 
       {/* Controls */}
-      <div className="flex items-center shrink-0" style={{ gap: 24 }}>
+      <div className="flex items-center shrink-0" style={{ gap: 12 }}>
         <Toggle checked={item.visible} onChange={(v) => onToggle(item.id, v)} disabled={isPending} />
 
         <button
@@ -172,7 +172,8 @@ function DeleteConfirm({ item, onCancel, onConfirm, loading }: {
     <div className="fixed inset-0 flex items-center justify-center z-50 p-6"
       style={{ background: "rgba(0,0,0,0.45)" }}>
       <div style={{
-        background: "#fff", borderRadius: 16, padding: 32, width: "100%", maxWidth: 400,
+        background: "#fff", borderRadius: 16, padding: 24, width: "100%", maxWidth: 400,
+        maxHeight: "90vh", overflowY: "auto",
         display: "flex", flexDirection: "column", gap: 20,
       }}>
         <h2 style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: 16, fontWeight: 700, color: "#062244" }}>
@@ -285,12 +286,12 @@ export function FuncionalidadesList({ initialData }: { initialData: Funcionalida
             className="flex items-center shrink-0 transition-opacity hover:opacity-80"
             style={{
               gap: 8, background: "#062244", color: "#fbfbfb", borderRadius: 9999,
-              padding: "10px 24px", fontFamily: "var(--font-montserrat), sans-serif",
+              padding: "10px 16px", fontFamily: "var(--font-montserrat), sans-serif",
               fontSize: 12, fontWeight: 500, border: "none", cursor: "pointer",
             }}
           >
             <Plus size={14} strokeWidth={2} />
-            Nueva funcionalidad
+            <span className="hidden sm:inline">Nueva funcionalidad</span>
           </button>
         </div>
 

@@ -163,7 +163,8 @@ function DeleteConfirm({ item, onCancel, onConfirm, loading }: {
     <div className="fixed inset-0 flex items-center justify-center z-50 p-6"
       style={{ background: "rgba(0,0,0,0.45)" }}>
       <div style={{
-        background: "#fff", borderRadius: 16, padding: 32, width: "100%", maxWidth: 400,
+        background: "#fff", borderRadius: 16, padding: 24, width: "100%", maxWidth: 400,
+        maxHeight: "90vh", overflowY: "auto",
         display: "flex", flexDirection: "column", gap: 20,
       }}>
         <h2 style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: 16, fontWeight: 700, color: "#062244" }}>
@@ -271,12 +272,12 @@ export function BeneficiosList({ initialData }: { initialData: Beneficio[] }) {
             className="flex items-center shrink-0 transition-opacity hover:opacity-80"
             style={{
               gap: 8, background: "#062244", color: "#fbfbfb", borderRadius: 9999,
-              padding: "10px 24px", fontFamily: "var(--font-montserrat), sans-serif",
+              padding: "10px 16px", fontFamily: "var(--font-montserrat), sans-serif",
               fontSize: 12, fontWeight: 500, border: "none", cursor: "pointer",
             }}
           >
             <Plus size={14} strokeWidth={2} />
-            Nuevo beneficio
+            <span className="hidden sm:inline">Nuevo beneficio</span>
           </button>
         </div>
 

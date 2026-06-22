@@ -268,11 +268,11 @@ export function BeneficioForm({ mode, initialData }: BeneficioFormProps) {
 
       {/* Form card */}
       <div
+        className="p-4 sm:p-8"
         style={{
           background: "#fff",
           borderRadius: 12,
           border: "1px solid #e0e0e0",
-          padding: 32,
           display: "flex",
           flexDirection: "column",
           gap: 24,
@@ -372,14 +372,15 @@ export function BeneficioForm({ mode, initialData }: BeneficioFormProps) {
           )}
 
           {/* Actions */}
-          <div className="flex gap-3 justify-end" style={{ paddingTop: 8 }}>
-            <Button type="button" variant="secondary" size="sm" onClick={() => router.push(listPath)}>
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3" style={{ paddingTop: 8 }}>
+            <Button type="button" variant="secondary" size="sm" className="w-full sm:w-auto" onClick={() => router.push(listPath)}>
               Cancelar
             </Button>
             <Button
               type="submit"
               variant="primary"
               size="sm"
+              className="w-full sm:w-auto"
               disabled={saving || (mode === "create" && !allComplete)}
               title={mode === "create" && !allComplete ? "Completa los 3 idiomas para guardar" : undefined}
             >

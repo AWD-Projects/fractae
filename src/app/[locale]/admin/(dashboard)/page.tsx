@@ -96,7 +96,7 @@ export default async function AdminDashboard() {
     <div className="flex flex-col gap-6">
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
         <StatCard label="Funcionalidades activas" value={funcionalidades} icon={LayoutGrid} />
         <StatCard label="Beneficios activos"      value={beneficios}      icon={Sparkles} />
         <StatCard label="Leads este mes"           value={leads}           icon={Users} />
@@ -146,9 +146,9 @@ export default async function AdminDashboard() {
           </Link>
         </div>
 
-        {/* Col headers */}
+        {/* Col headers — desktop only */}
         <div
-          className="grid"
+          className="hidden sm:grid"
           style={{
             gridTemplateColumns: "1.5fr 1fr 1fr 1fr 1fr",
             background: "rgba(244,243,243,0.6)",
@@ -194,56 +194,72 @@ export default async function AdminDashboard() {
               day: "numeric", month: "short",
             });
             return (
-              <div
-                key={lead.id}
-                className="grid"
-                style={{
-                  gridTemplateColumns: "1.5fr 1fr 1fr 1fr 1fr",
-                  borderTop: i > 0 ? "1px solid rgba(179,179,179,0.1)" : undefined,
-                  alignItems: "center",
-                }}
-              >
-                <div style={{ padding: "16px 24px", fontFamily: "var(--font-montserrat), sans-serif", fontSize: 13, fontWeight: 500, color: "#062244" }}>
-                  {lead.nombre}
+              <div key={lead.id} style={{ borderTop: i > 0 ? "1px solid rgba(179,179,179,0.1)" : undefined }}>
+
+                {/* Desktop row */}
+                <div
+                  className="hidden sm:grid"
+                  style={{ gridTemplateColumns: "1.5fr 1fr 1fr 1fr 1fr", alignItems: "center" }}
+                >
+                  <div style={{ padding: "16px 24px", fontFamily: "var(--font-montserrat), sans-serif", fontSize: 13, fontWeight: 500, color: "#062244" }}>
+                    {lead.nombre}
+                  </div>
+                  <div style={{ padding: "16px 24px", fontFamily: "var(--font-montserrat), sans-serif", fontSize: 13, color: "#b3b3b3" }}>
+                    {lead.canal === "whatsapp" ? "WhatsApp" : "Email"}
+                  </div>
+                  <div style={{ padding: "16px 24px", fontFamily: "var(--font-montserrat), sans-serif", fontSize: 13, color: "#b3b3b3" }}>
+                    {fecha}
+                  </div>
+                  <div style={{ padding: "16px 24px" }}>
+                    <span style={{
+                      display: "inline-block", padding: "3px 10px", borderRadius: 100,
+                      background: badge.bg, color: badge.color,
+                      fontFamily: "var(--font-montserrat), sans-serif", fontSize: 11, fontWeight: 600,
+                    }}>
+                      {badge.label}
+                    </span>
+                  </div>
+                  <div style={{ padding: "16px 24px", textAlign: "right" }}>
+                    <a
+                      href={buildContactUrl(lead.canal, lead.contacto, lead.nombre)}
+                      target={lead.canal === "whatsapp" ? "_blank" : undefined}
+                      rel={lead.canal === "whatsapp" ? "noopener noreferrer" : undefined}
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: 12, fontWeight: 600, color: "#00399d", textDecoration: "none" }}
+                    >
+                      Contactar
+                    </a>
+                  </div>
                 </div>
-                <div style={{ padding: "16px 24px", fontFamily: "var(--font-montserrat), sans-serif", fontSize: 13, color: "#b3b3b3" }}>
-                  {lead.canal === "whatsapp" ? "WhatsApp" : "Email"}
+
+                {/* Mobile card */}
+                <div className="flex sm:hidden items-center justify-between" style={{ padding: "12px 16px", gap: 12 }}>
+                  <div className="flex flex-col flex-1 min-w-0" style={{ gap: 3 }}>
+                    <span style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: 13, fontWeight: 600, color: "#062244", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      {lead.nombre}
+                    </span>
+                    <span style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: 11, color: "#b3b3b3" }}>
+                      {lead.canal === "whatsapp" ? "WhatsApp" : "Email"} · {fecha}
+                    </span>
+                  </div>
+                  <div className="flex items-center shrink-0" style={{ gap: 8 }}>
+                    <span style={{
+                      display: "inline-block", padding: "3px 10px", borderRadius: 100,
+                      background: badge.bg, color: badge.color,
+                      fontFamily: "var(--font-montserrat), sans-serif", fontSize: 10, fontWeight: 600, whiteSpace: "nowrap",
+                    }}>
+                      {badge.label}
+                    </span>
+                    <a
+                      href={buildContactUrl(lead.canal, lead.contacto, lead.nombre)}
+                      target={lead.canal === "whatsapp" ? "_blank" : undefined}
+                      rel={lead.canal === "whatsapp" ? "noopener noreferrer" : undefined}
+                      style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: 11, fontWeight: 600, color: "#00399d", textDecoration: "none", whiteSpace: "nowrap" }}
+                    >
+                      Contactar
+                    </a>
+                  </div>
                 </div>
-                <div style={{ padding: "16px 24px", fontFamily: "var(--font-montserrat), sans-serif", fontSize: 13, color: "#b3b3b3" }}>
-                  {fecha}
-                </div>
-                <div style={{ padding: "16px 24px" }}>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      padding: "3px 10px",
-                      borderRadius: 100,
-                      background: badge.bg,
-                      color: badge.color,
-                      fontFamily: "var(--font-montserrat), sans-serif",
-                      fontSize: 11,
-                      fontWeight: 600,
-                    }}
-                  >
-                    {badge.label}
-                  </span>
-                </div>
-                <div style={{ padding: "16px 24px", textAlign: "right" }}>
-                  <a
-                    href={buildContactUrl(lead.canal, lead.contacto, lead.nombre)}
-                    target={lead.canal === "whatsapp" ? "_blank" : undefined}
-                    rel={lead.canal === "whatsapp" ? "noopener noreferrer" : undefined}
-                    style={{
-                      fontFamily: "var(--font-montserrat), sans-serif",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: "#00399d",
-                      textDecoration: "none",
-                    }}
-                  >
-                    Contactar
-                  </a>
-                </div>
+
               </div>
             );
           })
